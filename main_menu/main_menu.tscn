@@ -1,10 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://j87n4lychbt5"]
+[gd_scene load_steps=8 format=3 uid="uid://j87n4lychbt5"]
 
 [ext_resource type="Script" path="res://main_menu/version_label.gd" id="1_5huni"]
 [ext_resource type="PackedScene" uid="uid://bdnyglk1i1cxl" path="res://gameplay/gameplay.tscn" id="2_5nvqq"]
 [ext_resource type="Script" path="res://main_menu/menu_options.gd" id="2_gpv3d"]
 [ext_resource type="PackedScene" uid="uid://dpicmplffpula" path="res://settings/settings.tscn" id="3_2osu0"]
 [ext_resource type="PackedScene" uid="uid://cee5dna3u27jf" path="res://assets/select_sfx.tscn" id="4_82nwe"]
+
+[sub_resource type="Gradient" id="Gradient_va138"]
+colors = PackedColorArray(1, 0.105882, 0.419608, 1, 0.270588, 0.792157, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_eh6qc"]
+gradient = SubResource("Gradient_va138")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -14,13 +20,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BG" type="ColorRect" parent="."]
-layout_mode = 0
-offset_left = -34.0
-offset_top = -28.0
-offset_right = 1318.0
-offset_bottom = 758.0
-color = Color(0.227451, 0.368627, 0.521569, 1)
+[node name="GradBG" type="Node2D" parent="."]
+rotation = -1.5708
+
+[node name="TextureBG" type="TextureRect" parent="GradBG"]
+offset_left = -744.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 1312.0
+texture = SubResource("GradientTexture2D_eh6qc")
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
@@ -33,7 +41,7 @@ offset_right = 65.5
 offset_bottom = 135.0
 grow_horizontal = 2
 theme_type_variation = &"HeaderLarge"
-text = "YOUR GAME"
+text = "Tinker2d"
 horizontal_alignment = 1
 
 [node name="Credit" type="Label" parent="."]
@@ -46,7 +54,7 @@ offset_top = 156.0
 offset_right = 59.5
 offset_bottom = 182.0
 grow_horizontal = 2
-text = "A game by YOU"
+text = "Game prototype"
 
 [node name="Controls" type="Label" parent="."]
 layout_mode = 0

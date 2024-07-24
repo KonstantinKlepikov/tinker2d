@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://bdnyglk1i1cxl"]
+[gd_scene load_steps=7 format=3 uid="uid://bdnyglk1i1cxl"]
 
 [ext_resource type="Script" path="res://gameplay/gameplay.gd" id="1_thqv1"]
 [ext_resource type="Texture2D" uid="uid://bgprycbqd2tbx" path="res://assets/icon.svg" id="2_o7ako"]
 [ext_resource type="PackedScene" uid="uid://cko02oljhiby" path="res://paused/paused.tscn" id="3_w8wrl"]
 [ext_resource type="PackedScene" uid="uid://cee5dna3u27jf" path="res://assets/select_sfx.tscn" id="4_7kf0b"]
+
+[sub_resource type="Gradient" id="Gradient_7kb2q"]
+colors = PackedColorArray(0.313726, 0, 1, 1, 1, 0.67451, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a5dx1"]
+gradient = SubResource("Gradient_7kb2q")
 
 [node name="Gameplay" type="Node2D"]
 script = ExtResource("1_thqv1")
@@ -57,3 +63,15 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="SelectSfx" parent="." instance=ExtResource("4_7kf0b")]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+rotation = -1.5708
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+offset_left = -720.0
+offset_top = 128.0
+offset_right = 1664.0
+offset_bottom = 1152.0
+texture = SubResource("GradientTexture2D_a5dx1")

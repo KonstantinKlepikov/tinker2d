@@ -20,7 +20,7 @@ offset_left = -27.0
 offset_top = -25.0
 offset_right = 1300.0
 offset_bottom = 743.0
-color = Color(0.501961, 0.223529, 0.27451, 1)
+color = Color(0.313726, 0, 1, 1)
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
@@ -52,7 +52,7 @@ horizontal_alignment = 1
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="SettingsControls" type="VFlowContainer" parent="." node_paths=PackedStringArray("shortcut_context")]
+[node name="SettingsControls" type="VFlowContainer" parent="."]
 layout_mode = 1
 anchors_preset = 13
 anchor_left = 0.5
@@ -64,7 +64,6 @@ offset_right = 77.0
 offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 2
-shortcut_context = NodePath("")
 alignment = 1
 script = ExtResource("1_n5jcg")
 
