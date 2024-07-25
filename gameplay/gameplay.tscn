@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bdnyglk1i1cxl"]
+[gd_scene load_steps=9 format=3 uid="uid://bdnyglk1i1cxl"]
 
 [ext_resource type="Script" path="res://gameplay/gameplay.gd" id="1_thqv1"]
-[ext_resource type="Texture2D" uid="uid://bgprycbqd2tbx" path="res://assets/icon.svg" id="2_o7ako"]
 [ext_resource type="PackedScene" uid="uid://cko02oljhiby" path="res://paused/paused.tscn" id="3_w8wrl"]
 [ext_resource type="PackedScene" uid="uid://cee5dna3u27jf" path="res://assets/select_sfx.tscn" id="4_7kf0b"]
+[ext_resource type="PackedScene" uid="uid://byweves45hahp" path="res://terrain/terrain_fast.tscn" id="5_n4ukj"]
+[ext_resource type="PackedScene" uid="uid://ccbx8a8moxpr8" path="res://terrain/terrain_slow_left.tscn" id="6_1ag2l"]
+[ext_resource type="PackedScene" uid="uid://ih6bsoe1dn3o" path="res://terrain/terrain_impass.tscn" id="6_k6gab"]
 
 [sub_resource type="Gradient" id="Gradient_7kb2q"]
 colors = PackedColorArray(0.313726, 0, 1, 1, 1, 0.67451, 1, 1)
@@ -14,45 +16,32 @@ gradient = SubResource("Gradient_7kb2q")
 [node name="Gameplay" type="Node2D"]
 script = ExtResource("1_thqv1")
 
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(655, 453)
-texture = ExtResource("2_o7ako")
+[node name="Node2D" type="Node2D" parent="."]
+rotation = -1.5708
 
-[node name="Stack" type="VFlowContainer" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 478.0
-offset_top = 115.0
-offset_right = 815.0
-offset_bottom = 722.0
-grow_horizontal = 2
-size_flags_horizontal = 4
-metadata/_edit_group_ = true
+[node name="TextureRect" type="TextureRect" parent="Node2D"]
+offset_left = -719.0
+offset_top = 127.0
+offset_right = 1665.0
+offset_bottom = 1151.0
+texture = SubResource("GradientTexture2D_a5dx1")
 
-[node name="Title" type="Label" parent="Stack"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_type_variation = &"HeaderLarge"
-text = "GAMEPLAY"
+[node name="TerrainFast" parent="." instance=ExtResource("5_n4ukj")]
 
-[node name="Instructions" type="Label" parent="Stack"]
-layout_mode = 2
-size_flags_vertical = 1
-text = "Get started with Godot Skeleton by replacing this Gameplay scene with your own."
-horizontal_alignment = 1
-autowrap_mode = 2
+[node name="TerrainSlowLeft" parent="." instance=ExtResource("6_1ag2l")]
+position = Vector2(24, -784)
 
-[node name="PauseInstructions" type="Label" parent="Stack"]
-layout_mode = 2
-text = "Press START, P, or ESC to open pause menu."
-horizontal_alignment = 1
+[node name="TerrainSlowLeft2" parent="." instance=ExtResource("6_1ag2l")]
+position = Vector2(384, -104)
 
-[node name="LinkButton" type="LinkButton" parent="Stack"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "View Template Source"
-uri = "https://github.com/brettchalupa/godot_skeleton"
+[node name="TerrainImpass" parent="." instance=ExtResource("6_k6gab")]
+position = Vector2(192, -48)
+
+[node name="TerrainImpass2" parent="." instance=ExtResource("6_k6gab")]
+position = Vector2(-80, -472)
+
+[node name="TerrainImpass3" parent="." instance=ExtResource("6_k6gab")]
+position = Vector2(384, -1296)
 
 [node name="Paused" parent="." instance=ExtResource("3_w8wrl")]
 visible = false
@@ -64,14 +53,4 @@ grow_vertical = 1
 
 [node name="SelectSfx" parent="." instance=ExtResource("4_7kf0b")]
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-rotation = -1.5708
-
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
-offset_left = -720.0
-offset_top = 128.0
-offset_right = 1664.0
-offset_bottom = 1152.0
-texture = SubResource("GradientTexture2D_a5dx1")
+[editable path="TerrainFast"]
