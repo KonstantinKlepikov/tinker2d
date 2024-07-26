@@ -5,7 +5,7 @@
 [sub_resource type="Curve2D" id="Curve2D_8m732"]
 bake_interval = 20.0
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 256, 240, 0, 0, 0, 0, 344, 144, 0, 0, 0, 0, 496, 104, 0, 0, 0, 0, 672, 152, 0, 0, 0, 0, 760, 280, 0, 0, 0, 0, 720, 424, 0, 0, 0, 0, 528, 488, 0, 0, 0, 0, 352, 456, 0, 0, 0, 0, 256, 384, 0, 0, 0, 0, 248, 304, 0, 0, 0, 0, 256, 240)
+"points": PackedVector2Array(0, 0, 0, 0, 256, 240, 0, 0, 0, 0, 344, 144, 0, 0, 0, 0, 480, 160, 0, 0, 0, 0, 672, 152, 0, 0, 0, 0, 760, 280, 0, 0, 0, 0, 720, 440, 0, 0, 0, 0, 496, 440, 0, 0, 0, 0, 352, 456, 0, 0, 0, 0, 272, 376, 0, 0, 0, 0, 248, 304, 0, 0, 0, 0, 256, 240)
 }
 point_count = 11
 
@@ -20,6 +20,6 @@ default_color = Color(1, 1, 1, 0)
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 texture_repeat = 2
-color = Color(0.639216, 0.00392157, 0.886275, 1)
+color = Color(0.341176, 0.396078, 0.419608, 1)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
