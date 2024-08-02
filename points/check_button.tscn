@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b353pi167ken3"]
+
+[ext_resource type="Script" path="res://points/check_button.gd" id="1_ejb77"]
+
+[node name="CheckButton" type="CheckButton"]
+offset_right = 44.0
+offset_bottom = 24.0
+text = "0"
+script = ExtResource("1_ejb77")

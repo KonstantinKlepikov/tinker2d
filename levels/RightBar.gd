@@ -1,6 +1,5 @@
 extends FlowContainer
 
-
 @export var tactic_scene: PackedScene
 
 

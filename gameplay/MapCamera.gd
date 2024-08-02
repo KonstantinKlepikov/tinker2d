@@ -1,6 +1,5 @@
 extends Camera2D
 
-
 var zoom_target: Vector2
 var mouse_start_position = Vector2.ZERO
 var camera_start_position = Vector2.ZERO
