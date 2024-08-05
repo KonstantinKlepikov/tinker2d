@@ -6,12 +6,12 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_rmoxw"]
 radius = 12.0
 
-[node name="PathNode" type="Area2D" groups=["path_nodes"]]
+[node name="PathNode" type="Area2D" groups=["path_nodes_group"]]
 script = ExtResource("1_hsp5w")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_gldwr")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["path_points"]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_rmoxw")
