@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://btoxp5owysrjq"]
+[gd_scene load_steps=7 format=3 uid="uid://btoxp5owysrjq"]
 
 [ext_resource type="PackedScene" uid="uid://bdnyglk1i1cxl" path="res://gameplay/gameplay.tscn" id="2_0631d"]
 [ext_resource type="Script" path="res://levels/strategic_canvas_hud.gd" id="2_bgr6m"]
 [ext_resource type="Script" path="res://levels/RightBar.gd" id="2_fbyeu"]
-[ext_resource type="PackedScene" uid="uid://b353pi167ken3" path="res://points/check_button.tscn" id="3_7js8b"]
 [ext_resource type="PackedScene" uid="uid://wgru3t2h52lr" path="res://levels/tactic.tscn" id="3_kaqot"]
 [ext_resource type="PackedScene" uid="uid://cko02oljhiby" path="res://paused/paused.tscn" id="5_et7d0"]
 [ext_resource type="PackedScene" uid="uid://cee5dna3u27jf" path="res://assets/select_sfx.tscn" id="6_cvdhj"]
@@ -14,83 +13,6 @@
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("2_bgr6m")
-
-[node name="Control" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 1152.0
-offset_right = 1280.0
-offset_bottom = 720.0
-
-[node name="CheckButton10" parent="CanvasLayer/Control" instance=ExtResource("3_7js8b")]
-offset_left = 32.0
-offset_top = 31.0
-offset_right = 90.0
-offset_bottom = 62.0
-num = 10
-
-[node name="CheckButton9" parent="CanvasLayer/Control" instance=ExtResource("3_7js8b")]
-offset_left = 32.0
-offset_top = 79.0
-offset_right = 90.0
-offset_bottom = 110.0
-num = 9
-
-[node name="CheckButton8" parent="CanvasLayer/Control" instance=ExtResource("3_7js8b")]
-offset_left = 32.0
-offset_top = 127.0
-offset_right = 90.0
-offset_bottom = 158.0
-num = 8
-
-[node name="CheckButton7" parent="CanvasLayer/Control" instance=ExtResource("3_7js8b")]
-offset_left = 32.0
-offset_top = 168.0
-offset_right = 90.0
-offset_bottom = 199.0
-num = 7
-
-[node name="CheckButton6" parent="CanvasLayer/Control" instance=ExtResource("3_7js8b")]
-offset_left = 32.0
-offset_top = 216.0
-offset_right = 90.0
-offset_bottom = 247.0
-num = 6
-
-[node name="CheckButton5" parent="CanvasLayer/Control" instance=ExtResource("3_7js8b")]
-offset_left = 32.0
-offset_top = 264.0
-offset_right = 90.0
-offset_bottom = 295.0
-num = 5
-
-[node name="CheckButton4" parent="CanvasLayer/Control" instance=ExtResource("3_7js8b")]
-offset_left = 32.0
-offset_top = 312.0
-offset_right = 90.0
-offset_bottom = 343.0
-num = 4
-
-[node name="CheckButton3" parent="CanvasLayer/Control" instance=ExtResource("3_7js8b")]
-offset_left = 32.0
-offset_top = 360.0
-offset_right = 90.0
-offset_bottom = 391.0
-num = 3
-
-[node name="CheckButton2" parent="CanvasLayer/Control" instance=ExtResource("3_7js8b")]
-offset_left = 32.0
-offset_top = 408.0
-offset_right = 90.0
-offset_bottom = 439.0
-num = 2
-
-[node name="CheckButton1" parent="CanvasLayer/Control" instance=ExtResource("3_7js8b")]
-offset_left = 32.0
-offset_top = 456.0
-offset_right = 90.0
-offset_bottom = 487.0
-num = 1
 
 [node name="Bar" type="FlowContainer" parent="CanvasLayer"]
 offset_left = 1168.0
