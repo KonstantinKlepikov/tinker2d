@@ -16,6 +16,7 @@ func _process(delta):
 
 
 func make_zoom(delta) -> void:
+	# camera zoom
 	if Input.is_action_just_pressed("zoom_in"):
 		zoom_target *= 1.1
 	if Input.is_action_just_pressed("zoom_out"):
@@ -24,6 +25,7 @@ func make_zoom(delta) -> void:
 
 
 func camera_drag():
+	# camera drag
 	if !is_draging and Input.is_action_just_pressed("camera_pan"):
 		mouse_start_position = get_viewport().get_mouse_position()
 		camera_start_position = position
