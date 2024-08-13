@@ -24,7 +24,7 @@ tactic_scene = ExtResource("3_kaqot")
 
 [node name="ToTactic" type="Button" parent="CanvasLayer/Bar"]
 layout_mode = 2
-text = "go tactics..."
+text = "> 	run"
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 offset_left = 8.0
