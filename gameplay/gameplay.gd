@@ -22,7 +22,7 @@ func _ready():
 		dragged = false
 
 
-func _process(_delta: float) -> void:	
+func _process(_delta: float) -> void:
 	if (
 		in_map == true 
 		and get_tree().get_current_scene().get_name() == 'Strategic'

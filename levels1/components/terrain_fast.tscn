@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://4uqdhny6t0ij"]
+
+[ext_resource type="Script" path="res://levels1/components/terrain_fast.gd" id="1_koasq"]
+
+[sub_resource type="Curve2D" id="Curve2D_aaslc"]
+bake_interval = 20.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 504, 720, 0, 0, 0, 0, 264, 408, 0, 0, 0, 0, 264, -96, 0, 0, 0, 0, 336, -223, 0, 0, 0, 0, 448, -128, 0, 0, 0, 0, 672, -240, 0, 0, 0, 0, 808, -376, 0, 0, 0, 0, 800, -600, 0, 0, 0, 0, 360, -816, 0, 0, 0, 0, 280, -968, 0, 0, 0, 0, 304, -1168, 0, 0, 0, 0, 504, -1512, 0, 0, 0, 0, 544, -1664, 0, 0, 0, 0, 912, -1664, 0, 0, 0, 0, 880, -1472, 0, 0, 0, 0, 664, -1184, 0, 0, 0, 0, 592, -1080, 0, 0, 0, 0, 600, -1040, 0, 0, 0, 0, 768, -968, 0, 0, 0, 0, 1008, -872, 0, 0, 0, 0, 1136, -608, 0, 0, 0, 0, 1112, -344, 0, 0, 0, 0, 960, -56, 0, 0, 0, 0, 744, 24, 0, 0, 0, 0, 496, 88, 0, 0, 0, 0, 496, 128, 0, 0, 0, 0, 720, 424, 0, 0, 0, 0, 952, 720, 0, 0, 0, 0, 552, 720, 0, 0, 0, 0, 504, 720)
+}
+point_count = 30
+
+[node name="TerrainFast" type="StaticBody2D"]
+script = ExtResource("1_koasq")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_aaslc")
+
+[node name="Line2D" type="Line2D" parent="."]
+default_color = Color(1, 1, 1, 0)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+texture_repeat = 2
+color = Color(0.439216, 0.509804, 0.541176, 1)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
