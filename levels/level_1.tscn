@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://ciw0fetnrlk3j"]
+
+[ext_resource type="Script" path="res://levels/level_1.gd" id="1_04xs6"]
+[ext_resource type="PackedScene" uid="uid://4uqdhny6t0ij" path="res://levels/components/terrain_fast.tscn" id="2_6toqj"]
+[ext_resource type="PackedScene" uid="uid://k1up0xtnr780" path="res://levels/components/terrain_slow.tscn" id="3_40cjo"]
+[ext_resource type="PackedScene" uid="uid://c43lcmkw1xo7l" path="res://levels/components/terrain_impass.tscn" id="4_qirdc"]
+[ext_resource type="PackedScene" uid="uid://ceh4vrlhn15ud" path="res://levels/path_nodes/path_node.tscn" id="5_yh81h"]
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_04xs6")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 128.0
+offset_top = -1664.0
+offset_right = 1152.0
+offset_bottom = 720.0
+color = Color(0.568627, 0.658824, 0.701961, 1)
+
+[node name="TerrainFast" parent="." instance=ExtResource("2_6toqj")]
+position = Vector2(-32, -1)
+
+[node name="TerrainSlow" parent="." instance=ExtResource("3_40cjo")]
+position = Vector2(368, -80)
+
+[node name="TerrainSlow2" parent="." instance=ExtResource("3_40cjo")]
+position = Vector2(-48, -768)
+
+[node name="TerrainSlow3" parent="." instance=ExtResource("3_40cjo")]
+position = Vector2(392, -1424)
+
+[node name="TerrainImpass" parent="." instance=ExtResource("4_qirdc")]
+position = Vector2(-112, -944)
+
+[node name="TerrainImpass2" parent="." instance=ExtResource("4_qirdc")]
+position = Vector2(-104, 200)
+
+[node name="TerrainImpass3" parent="." instance=ExtResource("4_qirdc")]
+position = Vector2(168, -1344)
+
+[node name="StartNode" parent="." instance=ExtResource("5_yh81h")]
+position = Vector2(704, 640)
+
+[node name="EndNode" parent="." instance=ExtResource("5_yh81h")]
+position = Vector2(768, -1600)
+
+[connection signal="mouse_entered" from="ColorRect" to="." method="_on_color_rect_mouse_entered"]
+[connection signal="mouse_exited" from="ColorRect" to="." method="_on_color_rect_mouse_exited"]

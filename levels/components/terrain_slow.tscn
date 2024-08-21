@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://ccbx8a8moxpr8"]
+[gd_scene load_steps=3 format=3 uid="uid://k1up0xtnr780"]
 
-[ext_resource type="Script" path="res://terrain/terrain_slow_left.gd" id="1_8168f"]
+[ext_resource type="Script" path="res://levels/components/terrain.gd" id="1_f2jr2"]
 
 [sub_resource type="Curve2D" id="Curve2D_8m732"]
 bake_interval = 20.0
@@ -9,8 +9,8 @@ _data = {
 }
 point_count = 11
 
-[node name="TerrainSlowLeft" type="StaticBody2D"]
-script = ExtResource("1_8168f")
+[node name="TerrainSlow" type="StaticBody2D"]
+script = ExtResource("1_f2jr2")
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_8m732")

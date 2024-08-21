@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://main_menu/version_label.gd" id="1_5huni"]
 [ext_resource type="Script" path="res://main_menu/menu_options.gd" id="2_gpv3d"]
 [ext_resource type="PackedScene" uid="uid://dpicmplffpula" path="res://settings/settings.tscn" id="3_2osu0"]
-[ext_resource type="PackedScene" uid="uid://btoxp5owysrjq" path="res://levels/strategic.tscn" id="3_l5shv"]
+[ext_resource type="PackedScene" uid="uid://dglq6vxfx5q2l" path="res://gameplay/strategic.tscn" id="3_fbesa"]
 [ext_resource type="PackedScene" uid="uid://cee5dna3u27jf" path="res://assets/select_sfx.tscn" id="4_82nwe"]
 
 [sub_resource type="Gradient" id="Gradient_va138"]
@@ -57,6 +57,7 @@ grow_horizontal = 2
 text = "Game prototype"
 
 [node name="Controls" type="Label" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 843.0
 offset_top = 573.0
@@ -69,6 +70,7 @@ Gamepads work too!"
 horizontal_alignment = 2
 
 [node name="Instructions" type="Label" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 54.0
 offset_top = 570.0
@@ -111,7 +113,7 @@ grow_vertical = 2
 shortcut_context = NodePath("Start")
 alignment = 1
 script = ExtResource("2_gpv3d")
-strategic_scene = ExtResource("3_l5shv")
+strategic_scene = ExtResource("3_fbesa")
 settings_scene = ExtResource("3_2osu0")
 
 [node name="Start" type="Button" parent="MenuOptions"]

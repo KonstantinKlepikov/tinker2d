@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://4uqdhny6t0ij"]
 
-[ext_resource type="Script" path="res://levels1/components/terrain_fast.gd" id="1_koasq"]
+[ext_resource type="Script" path="res://levels/components/terrain.gd" id="1_diaft"]
 
 [sub_resource type="Curve2D" id="Curve2D_aaslc"]
 bake_interval = 20.0
@@ -10,7 +10,7 @@ _data = {
 point_count = 30
 
 [node name="TerrainFast" type="StaticBody2D"]
-script = ExtResource("1_koasq")
+script = ExtResource("1_diaft")
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_aaslc")
