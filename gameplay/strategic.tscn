@@ -26,7 +26,7 @@ tactic_scene = ExtResource("5_rn88x")
 
 [node name="ToTactic" type="Button" parent="CanvasLayer/Bar"]
 layout_mode = 2
-text = "> 	run"
+text = "run"
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 offset_left = 8.0

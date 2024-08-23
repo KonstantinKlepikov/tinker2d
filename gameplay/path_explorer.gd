@@ -18,7 +18,7 @@ func _process(_delta: float) -> void:
 
 
 func display_path() -> void:
-	for p in Gamevars.line:
+	for p in Gamevars.line_positions:
 		line.add_point(p)
 	if line.get_point_count() == 2:
 		line.default_color = Color(1, 1, 1, 0)

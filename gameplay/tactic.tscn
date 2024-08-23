@@ -10,6 +10,7 @@
 script = ExtResource("1_472xi")
 
 [node name="Camera2D" parent="." instance=ExtResource("2_5suen")]
+visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("3_cbwfw")
