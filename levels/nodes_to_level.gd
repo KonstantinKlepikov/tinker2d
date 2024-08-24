@@ -11,7 +11,7 @@ func _ready():
 	pass
 
 
-func _process(_delta):
+func _process(_delta) -> void:
 	if get_tree().get_current_scene().get_name() == "Strategic" and in_map:
 		# gui for add path nodes to map 
 		# node not be add upon another node

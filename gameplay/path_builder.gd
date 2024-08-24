@@ -2,7 +2,6 @@ extends Node2D
 
 var map_node = preload("res://levels/level_1.tscn")
 var line: Line2D # current line path
-var dragged: bool = false # node to drag
 var lvl: Node2D # map
 
 
