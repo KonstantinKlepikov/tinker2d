@@ -13,6 +13,7 @@ script = ExtResource("1_472xi")
 visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
 script = ExtResource("3_cbwfw")
 
 [node name="Label" type="Label" parent="CanvasLayer"]

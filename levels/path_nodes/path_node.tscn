@@ -6,15 +6,16 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_rmoxw"]
 radius = 12.0
 
-[node name="PathNode" type="Area2D" groups=["path_nodes_group"]]
-z_index = 1
+[node name="PathNode" type="StaticBody2D" groups=["path_nodes_group"]]
+z_index = -1
+input_pickable = true
 script = ExtResource("1_am8vr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_fjnwo")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["path_points"]]
 shape = SubResource("CircleShape2D_rmoxw")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

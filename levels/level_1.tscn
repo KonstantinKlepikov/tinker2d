@@ -1,13 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://ciw0fetnrlk3j"]
+[gd_scene load_steps=5 format=3 uid="uid://ciw0fetnrlk3j"]
 
-[ext_resource type="Script" path="res://levels/nodes_to_level.gd" id="1_0ael1"]
+[ext_resource type="Script" path="res://levels/level_script.gd" id="1_glqkq"]
 [ext_resource type="PackedScene" uid="uid://4uqdhny6t0ij" path="res://levels/components/terrain_fast.tscn" id="2_6toqj"]
 [ext_resource type="PackedScene" uid="uid://k1up0xtnr780" path="res://levels/components/terrain_slow.tscn" id="3_40cjo"]
 [ext_resource type="PackedScene" uid="uid://c43lcmkw1xo7l" path="res://levels/components/terrain_impass.tscn" id="4_qirdc"]
-[ext_resource type="PackedScene" uid="uid://ceh4vrlhn15ud" path="res://levels/path_nodes/path_node.tscn" id="5_yh81h"]
 
 [node name="Level1" type="Node2D"]
-script = ExtResource("1_0ael1")
+script = ExtResource("1_glqkq")
+start_x = 704.0
+start_y = 640.0
+end_x = 768.0
+end_y = -1600.0
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = 128.0
@@ -36,13 +39,6 @@ position = Vector2(-104, 200)
 
 [node name="TerrainImpass3" parent="." instance=ExtResource("4_qirdc")]
 position = Vector2(168, -1344)
-
-[node name="StartNode" parent="." instance=ExtResource("5_yh81h")]
-position = Vector2(704, 640)
-scale = Vector2(2, 2)
-
-[node name="EndNode" parent="." instance=ExtResource("5_yh81h")]
-position = Vector2(768, -1600)
 
 [connection signal="mouse_entered" from="ColorRect" to="." method="_on_color_rect_mouse_entered"]
 [connection signal="mouse_exited" from="ColorRect" to="." method="_on_color_rect_mouse_exited"]
