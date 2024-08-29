@@ -19,17 +19,17 @@ func _ready():
 	add_child(lvl)
 	
 	line = Line2D.new()
-	add_child(line)
+	lvl.add_child(line)
 	
 	start = path_node.instantiate()
 	start.set_name("StartNode")
 	start.position = Vector2(lvl.start_x, lvl.start_y)
-	add_child(start)
+	lvl.add_child(start)
 	
 	end = path_node.instantiate()
 	end.set_name("EndNode")
 	end.position = Vector2(lvl.end_x, lvl.end_y)
-	add_child(end)
+	lvl.add_child(end)
 
 
 func _process(_delta: float) -> void:
@@ -73,7 +73,7 @@ func can_act_in_node(node: StaticBody2D) -> void:
 func add_path_node() -> void:
 	# add path nodes to map
 	var pn = path_node.instantiate()
-	add_child(pn)
+	lvl.add_child(pn)
 	pn.position = to_local(get_global_mouse_position())
 	pn.mouse_entered.connect(can_act_in_node.bind(pn))
 	pn.mouse_exited.connect(cant_act_in_node)
@@ -83,7 +83,7 @@ func add_path_node() -> void:
 func delete_path_node(node: StaticBody2D):
 	# delete path node
 	path.erase(node)
-	remove_child(node)
+	lvl.remove_child(node)
 	node.queue_free()
 	in_node = false
 	

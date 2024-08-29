@@ -9,7 +9,7 @@ func _ready():
 	add_child(lvl)
 	
 	line = Line2D.new()
-	add_child(line)
+	lvl.add_child(line)
 	display_path()
 
 

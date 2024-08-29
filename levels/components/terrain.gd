@@ -1,5 +1,7 @@
 extends StaticBody2D
 
+@export var speed_coof: float
+
 
 func _ready() -> void:
 	var curve = $Path2D.curve

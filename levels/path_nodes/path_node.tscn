@@ -7,7 +7,6 @@
 radius = 12.0
 
 [node name="PathNode" type="StaticBody2D" groups=["path_nodes_group"]]
-z_index = -1
 input_pickable = true
 script = ExtResource("1_am8vr")
 
