@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://dglq6vxfx5q2l"]
+[gd_scene load_steps=7 format=3 uid="uid://dglq6vxfx5q2l"]
 
 [ext_resource type="Script" path="res://gameplay/path_builder.gd" id="1_vhdup"]
-[ext_resource type="PackedScene" uid="uid://bt5ycocupu6av" path="res://gameplay/camera_2d.tscn" id="3_23xxs"]
 [ext_resource type="Script" path="res://gameplay/canvas_hud.gd" id="3_f8mog"]
 [ext_resource type="Script" path="res://gameplay/to_tactic_scene.gd" id="4_glekw"]
 [ext_resource type="PackedScene" uid="uid://cko02oljhiby" path="res://paused/paused.tscn" id="5_fgcoq"]
@@ -10,8 +9,6 @@
 
 [node name="Strategic" type="Node2D"]
 script = ExtResource("1_vhdup")
-
-[node name="Camera2D" parent="." instance=ExtResource("3_23xxs")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("3_f8mog")

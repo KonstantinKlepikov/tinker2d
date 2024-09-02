@@ -1,6 +1,4 @@
-extends StaticBody2D
-
-@export var speed_coof: float
+extends Area2D
 
 
 func _ready() -> void:

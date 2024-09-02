@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkirs6mudbdul"]
+
+[ext_resource type="Script" path="res://levels/line/path_line.gd" id="1_qoml3"]
+
+[node name="LinePath" type="Line2D"]
+script = ExtResource("1_qoml3")
+
+[node name="LinePathArea2D" type="Area2D" parent="."]
+
+[connection signal="area_entered" from="LinePathArea2D" to="LinePathArea2D" method="_on_area_entered"]
+[connection signal="area_exited" from="LinePathArea2D" to="LinePathArea2D" method="_on_area_exited"]
