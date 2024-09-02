@@ -2,14 +2,15 @@ extends Node2D
 
 var map_node = preload("res://levels/level_1.tscn")
 var path_node = preload("res://levels/path_nodes/path_node.tscn")
+var path_line = preload("res://levels/line/path_line.tscn")
 var line: Line2D # current line path
-var lvl: Node2D # map
-var in_node := false # node where a mouse inside
-var current_node: StaticBody2D
-var dragged: bool = false # node to drag
+var lvl: Node2D # current map
+var in_node := false # id mouse inside node
+var current_node: StaticBody2D # node where we operate (delete and drag)
+var dragged: bool = false # is node dragged
 var path: Array[StaticBody2D] # current path except start and end
-var start: StaticBody2D
-var end: StaticBody2D
+var start: StaticBody2D # start node
+var end: StaticBody2D # end node
 
 
 func _ready():
@@ -17,8 +18,10 @@ func _ready():
 	Gamevars.map_node = map_node
 	lvl = map_node.instantiate()
 	add_child(lvl)
+	#impass = lvl.find_children("*Impass*")
 	
-	line = Line2D.new()
+	line = path_line.instantiate()
+	line.default_color = Color(1, 1, 1, 0)
 	lvl.add_child(line)
 	
 	start = path_node.instantiate()
@@ -50,12 +53,14 @@ func _process(_delta: float) -> void:
 
 		if Input.is_action_pressed("add_node") and dragged:
 			drag(current_node)
-			
+
 		if Input.is_action_just_released("add_node") and dragged:
 			dragged = false
-	
-	if len(path) != line.get_point_count():
-		display_path()
+
+	if lvl.line_inside_impass > 0:
+		line.default_color = Color.CRIMSON
+	else:
+		line.default_color = Color.WHITE_SMOKE
 
 
 func cant_act_in_node() -> void:
@@ -78,6 +83,8 @@ func add_path_node() -> void:
 	pn.mouse_entered.connect(can_act_in_node.bind(pn))
 	pn.mouse_exited.connect(cant_act_in_node)
 	path.append(pn)
+	display_path()
+	reshape_path()
 
 
 func delete_path_node(node: StaticBody2D):
@@ -86,10 +93,14 @@ func delete_path_node(node: StaticBody2D):
 	lvl.remove_child(node)
 	node.queue_free()
 	in_node = false
+	display_path()
+	reshape_path()
 	
 	
 func drag(node: StaticBody2D):
 	node.position = to_local(get_global_mouse_position())
+	display_path()
+	reshape_path()
 
 
 func display_path() -> void:
@@ -99,12 +110,14 @@ func display_path() -> void:
 	for p in path:
 		line.add_point(p.position)
 	line.add_point(end.position)
-	if len(path) == 0:
-		line.default_color = Color(1, 1, 1, 0)
-	else:
-		line.default_color = Color(1, 1, 1, 1)
 
 	var line_positions: Array[Vector2] = []
 	for i in range(line.get_point_count()):
 		line_positions.append(line.get_point_position(i))
 		Gamevars.line_positions = line_positions
+		
+		
+func reshape_path() -> void:
+	# reshape line path
+	line.clear_shape()
+	line.build_shape()

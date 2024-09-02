@@ -47,3 +47,9 @@ position = Vector2(168, -1344)
 
 [connection signal="mouse_entered" from="ColorRect" to="." method="_on_color_rect_mouse_entered"]
 [connection signal="mouse_exited" from="ColorRect" to="." method="_on_color_rect_mouse_exited"]
+[connection signal="area_entered" from="TerrainImpass" to="." method="_on_terrain_impass_area_entered"]
+[connection signal="area_exited" from="TerrainImpass" to="." method="_on_terrain_impass_area_exited"]
+[connection signal="area_entered" from="TerrainImpass2" to="." method="_on_terrain_impass_area_entered"]
+[connection signal="area_exited" from="TerrainImpass2" to="." method="_on_terrain_impass_area_exited"]
+[connection signal="area_entered" from="TerrainImpass3" to="." method="_on_terrain_impass_area_entered"]
+[connection signal="area_exited" from="TerrainImpass3" to="." method="_on_terrain_impass_area_exited"]
