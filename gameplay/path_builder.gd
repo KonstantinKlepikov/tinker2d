@@ -1,5 +1,7 @@
 extends Node2D
 
+@export var tactic_scene: PackedScene
+
 var map_node = preload("res://levels/level_1.tscn")
 var path_node = preload("res://levels/path_nodes/path_node.tscn")
 var path_line = preload("res://levels/line/path_line.tscn")
@@ -57,10 +59,14 @@ func _process(_delta: float) -> void:
 		if Input.is_action_just_released("add_node") and dragged:
 			dragged = false
 
-	if lvl.line_inside_impass > 0:
-		line.default_color = Color.CRIMSON
+	if line.get_point_count() <= 2:
+		line.default_color = Color(1, 1, 1, 0)
+		
 	else:
-		line.default_color = Color.WHITE_SMOKE
+		if lvl.line_inside_impass > 0:
+			line.default_color = Color.CRIMSON
+		else:
+			line.default_color = Color.WHITE_SMOKE
 
 
 func cant_act_in_node() -> void:
@@ -110,13 +116,33 @@ func display_path() -> void:
 	for p in path:
 		line.add_point(p.position)
 	line.add_point(end.position)
-
+	
 	var line_positions: Array[Vector2] = []
 	for i in range(line.get_point_count()):
 		line_positions.append(line.get_point_position(i))
 		Gamevars.line_positions = line_positions
-		
-		
+
+
+func _on_clear_pressed():
+	# clear the line
+	for p in path:
+		lvl.remove_child(p)
+		p.queue_free()
+	path.clear()
+	display_path()
+	reshape_path()
+
+
+func _on_to_tactic_pressed():
+	# change current game mode
+	if lvl.line_inside_impass > 0 or line.get_point_count() <= 2:
+		$CanvasLayer/ToTacticAlert.visible = true
+		await get_tree().create_timer(3.0, false, false, true).timeout
+		$CanvasLayer/ToTacticAlert.visible = false
+	else:
+		get_tree().change_scene_to_packed(tactic_scene)
+
+
 func reshape_path() -> void:
 	# reshape line path
 	line.clear_shape()
