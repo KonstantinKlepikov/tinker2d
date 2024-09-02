@@ -10,7 +10,7 @@ func _process(_delta):
 
 
 func _on_mouse_entered():
-	scale = Vector2(1.5, 1.5)
+	scale = Vector2(2, 2)
 
 
 func _on_mouse_exited():

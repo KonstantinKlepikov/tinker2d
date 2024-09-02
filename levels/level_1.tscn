@@ -22,7 +22,7 @@ offset_right = 1152.0
 offset_bottom = 720.0
 mouse_filter = 1
 mouse_default_cursor_shape = 3
-color = Color(0.568627, 0.658824, 0.701961, 1)
+color = Color(0, 0.608167, 0.89, 1)
 
 [node name="TerrainFast" parent="." instance=ExtResource("2_6toqj")]
 position = Vector2(-32, -1)

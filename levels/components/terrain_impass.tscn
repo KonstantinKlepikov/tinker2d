@@ -20,6 +20,6 @@ default_color = Color(1, 1, 1, 0)
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 texture_repeat = 2
-color = Color(0.1701, 0.19936, 0.21, 1)
+color = Color(0, 0.218667, 0.32, 1)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
