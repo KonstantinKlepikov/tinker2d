@@ -20,7 +20,6 @@ func _ready():
 	Gamevars.map_node = map_node
 	lvl = map_node.instantiate()
 	add_child(lvl)
-	#impass = lvl.find_children("*Impass*")
 	
 	line = path_line.instantiate()
 	line.default_color = Color(1, 1, 1, 0)

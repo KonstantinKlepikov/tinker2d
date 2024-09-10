@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends Area2D
 
 @export var speed_coof: float
 

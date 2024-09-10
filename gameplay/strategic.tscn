@@ -14,10 +14,11 @@ tactic_scene = ExtResource("5_rn88x")
 script = ExtResource("3_f8mog")
 
 [node name="Bar" type="FlowContainer" parent="CanvasLayer"]
-offset_left = 1168.0
-offset_top = 602.0
-offset_right = 1263.0
-offset_bottom = 712.0
+offset_left = 1176.0
+offset_top = 608.0
+offset_right = 1280.0
+offset_bottom = 720.0
+alignment = 1
 vertical = true
 
 [node name="Clear" type="Button" parent="CanvasLayer/Bar"]
@@ -27,9 +28,9 @@ text = "clear"
 
 [node name="ToTactic" type="Button" parent="CanvasLayer/Bar"]
 layout_mode = 2
-text = "run"
+text = "to tactic"
 
-[node name="Label" type="Label" parent="CanvasLayer"]
+[node name="Mode" type="Label" parent="CanvasLayer"]
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 125.0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c43lcmkw1xo7l"]
 
-[ext_resource type="Script" path="res://levels/components/terrain_impass.gd" id="1_y6rw3"]
+[ext_resource type="Script" path="res://levels/components/terrain.gd" id="1_53snx"]
 
 [sub_resource type="Curve2D" id="Curve2D_stn5x"]
 bake_interval = 20.0
@@ -10,7 +10,7 @@ _data = {
 point_count = 8
 
 [node name="TerrainImpass" type="Area2D"]
-script = ExtResource("1_y6rw3")
+script = ExtResource("1_53snx")
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_stn5x")

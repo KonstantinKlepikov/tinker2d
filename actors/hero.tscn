@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2icdubaonhui"]
+
+[ext_resource type="Texture2D" uid="uid://b2dx0f1rqpisc" path="res://assets/godot_prototype_assets_by_kpids/classic/tiles/solid_logo.png" id="1_gl32s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2gspw"]
+size = Vector2(64, 64)
+
+[node name="Hero" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_gl32s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2gspw")
