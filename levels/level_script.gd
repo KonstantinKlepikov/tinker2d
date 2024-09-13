@@ -5,6 +5,7 @@ var in_map: bool = false # is mouse in a map
 @export var start_y: float
 @export var end_x: float
 @export var end_y: float
+@export var energy: float
 var line_inside_impass := 0
 var speed_coef := 1.0
 

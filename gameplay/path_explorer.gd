@@ -1,40 +1,44 @@
 extends Node2D
 
-var hero_path = preload("res://actors/hero_path.tscn")
-var hero_path_in: Path2D
-var line: Line2D # for display path of hero
+var hero_path_base = preload("res://actors/hero_path.tscn")
+var hero_path: Path2D
 var lvl: Node2D # map
-var run:= false # run or stop gameplay
 
 
 func _ready():
-	lvl = Gamevars.map_node.instantiate()
-	add_child(lvl)
 	
-	line = Line2D.new()
-	lvl.add_child((line))
+	lvl = Gamevars.current_map
+	add_child(lvl)
 
-	hero_path_in = hero_path.instantiate()
-	lvl.add_child(hero_path_in)
+	hero_path = hero_path_base.instantiate()
+	lvl.add_child(hero_path)
 
-	display_line()
+	build_hero_path()
 	
 	
 func _process(_delta: float) -> void:
-	hero_path_in.speed_coef = lvl.speed_coef
+	# move a hero
+	hero_path.speed_coef = lvl.speed_coef
+	# change speed and energy and display
 	if lvl.speed_coef:
-		$CanvasLayer/SpeedCoef.text = "Speed coef: " + str(lvl.speed_coef)
-
-
-func display_line() -> void:
-	for p in Gamevars.line_positions:
-		line.add_point(p)
-		hero_path_in.curve.add_point(p)
+		$CanvasLayer/GameInfo/SpeedCoef.text = "Speed: " + str(lvl.speed_coef)
+		if hero_path.run and lvl.energy > 0:
+			lvl.energy -= lvl.speed_coef
+			if lvl.energy <= 0:
+				lvl.energy = 0
+				hero_path.run = false
+	$CanvasLayer/GameInfo/HeroEnergy.text = "Energy: " + str(lvl.energy)
+	
+		
+func build_hero_path():
+	for i in Gamevars.line.points:
+		hero_path.curve.add_point(i)
 
 
 func _on_run_pressed():
-	hero_path_in.run = true
+	if lvl.energy > 0:
+		hero_path.run = true
 
 
 func _on_stop_pressed():
-	hero_path_in.run = false
+	hero_path.run = false

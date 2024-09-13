@@ -2,7 +2,7 @@ extends Node2D
 
 @export var tactic_scene: PackedScene
 
-var map_node = preload("res://levels/level_1.tscn")
+var start_map = preload("res://levels/level_1.tscn")
 var path_node = preload("res://levels/path_nodes/path_node.tscn")
 var path_line = preload("res://levels/line/path_line.tscn")
 var line: Line2D # current line path
@@ -17,8 +17,7 @@ var end: StaticBody2D # end node
 
 func _ready():
 
-	Gamevars.map_node = map_node
-	lvl = map_node.instantiate()
+	lvl = start_map.instantiate()
 	add_child(lvl)
 	
 	line = path_line.instantiate()
@@ -115,11 +114,6 @@ func display_path() -> void:
 	for p in path:
 		line.add_point(p.position)
 	line.add_point(end.position)
-	
-	var line_positions: Array[Vector2] = []
-	for i in range(line.get_point_count()):
-		line_positions.append(line.get_point_position(i))
-		Gamevars.line_positions = line_positions
 
 
 func _on_clear_pressed():
@@ -139,6 +133,9 @@ func _on_to_tactic_pressed():
 		await get_tree().create_timer(3.0, false, false, true).timeout
 		$CanvasLayer/ToTacticAlert.visible = false
 	else:
+		remove_child(lvl)
+		Gamevars.current_map = lvl
+		Gamevars.line = line
 		get_tree().change_scene_to_packed(tactic_scene)
 
 

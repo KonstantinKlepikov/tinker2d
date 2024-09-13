@@ -1,6 +1,6 @@
 extends Path2D
 
-var speed := 0.02
+var speed := 0.04
 var speed_coef: float
 var run := false # run or wait
 var place := true # init first placement of hero
