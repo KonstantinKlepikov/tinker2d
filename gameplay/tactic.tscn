@@ -24,6 +24,10 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "run"
 
+[node name="Bust" type="Button" parent="CanvasLayer/Bar"]
+layout_mode = 2
+text = "bust"
+
 [node name="Stop" type="Button" parent="CanvasLayer/Bar"]
 layout_mode = 2
 text = "stop"
@@ -39,11 +43,15 @@ text = "Tactic mode"
 
 [node name="SpeedCoef" type="Label" parent="CanvasLayer/GameInfo"]
 layout_mode = 2
-text = "Speed:"
+
+[node name="EnergyConsume" type="Label" parent="CanvasLayer/GameInfo"]
+layout_mode = 2
 
 [node name="HeroEnergy" type="Label" parent="CanvasLayer/GameInfo"]
 layout_mode = 2
-text = "Energy:"
+
+[node name="CanBust" type="Label" parent="CanvasLayer/GameInfo"]
+layout_mode = 2
 
 [node name="Paused" parent="CanvasLayer" instance=ExtResource("3_yooxm")]
 visible = false
@@ -51,4 +59,5 @@ visible = false
 [node name="SelectSfx" parent="CanvasLayer" instance=ExtResource("4_3p0am")]
 
 [connection signal="pressed" from="CanvasLayer/Bar/Run" to="." method="_on_run_pressed"]
+[connection signal="pressed" from="CanvasLayer/Bar/Bust" to="." method="_on_bust_pressed"]
 [connection signal="pressed" from="CanvasLayer/Bar/Stop" to="." method="_on_stop_pressed"]

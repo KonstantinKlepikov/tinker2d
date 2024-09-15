@@ -12,7 +12,6 @@ start_x = 704.0
 start_y = 640.0
 end_x = 768.0
 end_y = -1600.0
-energy = 1000.0
 
 [node name="Camera2D" parent="." instance=ExtResource("2_gp23p")]
 
