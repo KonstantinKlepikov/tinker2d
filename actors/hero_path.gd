@@ -8,10 +8,13 @@ var is_run := false # run or wait
 var is_at_end := false
 var is_first_run := true # init first placement of hero
 var is_busted := false
+var main_weapon: Node2D
 
 
 func _ready():	
 	build_hero_path()
+	main_weapon = preload("res://weapons/lazor.tscn").instantiate()
+	$PathFollow2D/Hero.add_child(main_weapon)
 
 
 func _process(delta: float) -> void:

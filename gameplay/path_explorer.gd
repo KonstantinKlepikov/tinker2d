@@ -1,6 +1,5 @@
 extends Node2D
 
-var hero_and_path_base = preload("res://actors/hero_path.tscn")
 var hero_and_path: Path2D
 var lvl: Node2D # map
 
@@ -10,7 +9,7 @@ func _ready():
 	lvl = Gamevars.current_map
 	add_child(lvl)
 
-	hero_and_path = hero_and_path_base.instantiate()
+	hero_and_path = preload("res://actors/hero_path.tscn").instantiate()
 	lvl.add_child(hero_and_path)
 
 

@@ -4,7 +4,6 @@ extends Node2D
 
 var start_map = preload("res://levels/level_1.tscn")
 var path_node = preload("res://levels/path_nodes/path_node.tscn")
-var path_line = preload("res://levels/line/path_line.tscn")
 var line: Line2D # current line path
 var lvl: Node2D # current map
 var in_node := false # id mouse inside node
@@ -20,7 +19,7 @@ func _ready():
 	lvl = start_map.instantiate()
 	add_child(lvl)
 	
-	line = path_line.instantiate()
+	line = preload("res://levels/line/path_line.tscn").instantiate()
 	line.default_color = Color(1, 1, 1, 0)
 	lvl.add_child(line)
 	
