@@ -14,7 +14,6 @@ func _ready():
 	$AttackArea/CollisionShape2D.shape.radius = attack_radius
 	$AimingArea/CollisionShape2D.shape.radius = aiming_radius
 
-
 func _draw() -> void:
 	draw_attack_radius()
 	draw_aiming_radius()

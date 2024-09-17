@@ -11,6 +11,12 @@ func _ready():
 
 	hero_and_path = preload("res://actors/hero_path.tscn").instantiate()
 	lvl.add_child(hero_and_path)
+	
+	# TODO: fixme
+	$CanvasLayer/Bar/Weapon1.text = 'lazor'
+	$CanvasLayer/Bar/Weapon2.text = 'rocket'
+	hero_and_path.main_weapon = hero_and_path.weapons['lazor']
+	hero_and_path.main_weapon.visible = true
 
 
 func _process(_delta: float) -> void:
@@ -51,3 +57,25 @@ func _on_bust_pressed():
 		hero_and_path.current_bust_coef = 1.0
 		await get_tree().create_timer(Gamevars.BUST_TIMEOUT).timeout
 		hero_and_path.is_busted = false
+
+
+func _on_weapon_1_toggled(toggled_on: bool) -> void:
+	# switch to lazor
+	if toggled_on:
+		hero_and_path.weapons['lazor'].visible = true
+		hero_and_path.weapons['rocket'].visible = false
+		hero_and_path.main_weapon = hero_and_path.weapons['lazor']
+		$CanvasLayer/Bar/Weapon2.set_pressed_no_signal(false)
+	else:
+		$CanvasLayer/Bar/Weapon2.toggled(true)
+
+
+func _on_weapon_2_toggled(toggled_on: bool) -> void:
+	# switch to rocket
+	if toggled_on:
+		hero_and_path.weapons['lazor'].visible = false
+		hero_and_path.weapons['rocket'].visible = true
+		hero_and_path.main_weapon = hero_and_path.weapons['rocket']
+		$CanvasLayer/Bar/Weapon1.set_pressed_no_signal(false)
+	else:
+		$CanvasLayer/Bar/Weapon1.toggled(true)

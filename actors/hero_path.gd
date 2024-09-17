@@ -9,12 +9,17 @@ var is_at_end := false
 var is_first_run := true # init first placement of hero
 var is_busted := false
 var main_weapon: Node2D
+var weapons: Dictionary
 
 
 func _ready():	
 	build_hero_path()
-	main_weapon = preload("res://weapons/lazor.tscn").instantiate()
-	$PathFollow2D/Hero.add_child(main_weapon)
+	#main_weapon = preload("res://weapons/lazor.tscn").instantiate()
+	weapons['lazor'] = preload("res://weapons/lazor.tscn").instantiate()
+	weapons['rocket'] = preload("res://weapons/rocket.tscn").instantiate()
+	$PathFollow2D/Hero.add_child(weapons['lazor'])
+	$PathFollow2D/Hero.add_child(weapons['rocket'])
+	main_weapon = weapons['lazor']
 
 
 func _process(delta: float) -> void:

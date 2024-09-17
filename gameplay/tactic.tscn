@@ -12,8 +12,8 @@ script = ExtResource("1_472xi")
 script = ExtResource("3_cbwfw")
 
 [node name="Bar" type="FlowContainer" parent="CanvasLayer"]
-offset_left = 1176.0
-offset_top = 608.0
+offset_left = 1152.0
+offset_top = 384.0
 offset_right = 1280.0
 offset_bottom = 720.0
 alignment = 1
@@ -31,6 +31,15 @@ text = "bust"
 [node name="Stop" type="Button" parent="CanvasLayer/Bar"]
 layout_mode = 2
 text = "stop"
+
+[node name="Weapon1" type="CheckButton" parent="CanvasLayer/Bar"]
+layout_mode = 2
+button_pressed = true
+text = "Weapon1"
+
+[node name="Weapon2" type="CheckButton" parent="CanvasLayer/Bar"]
+layout_mode = 2
+text = "Weapon1"
 
 [node name="GameInfo" type="FlowContainer" parent="CanvasLayer"]
 offset_right = 128.0
@@ -61,3 +70,5 @@ visible = false
 [connection signal="pressed" from="CanvasLayer/Bar/Run" to="." method="_on_run_pressed"]
 [connection signal="pressed" from="CanvasLayer/Bar/Bust" to="." method="_on_bust_pressed"]
 [connection signal="pressed" from="CanvasLayer/Bar/Stop" to="." method="_on_stop_pressed"]
+[connection signal="toggled" from="CanvasLayer/Bar/Weapon1" to="." method="_on_weapon_1_toggled"]
+[connection signal="toggled" from="CanvasLayer/Bar/Weapon2" to="." method="_on_weapon_2_toggled"]

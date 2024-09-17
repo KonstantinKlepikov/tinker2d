@@ -7,7 +7,10 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_t51as"]
 
 [node name="Rocket" type="Node2D"]
+visible = false
 script = ExtResource("1_3hthx")
+attack_radius = 1200.0
+aiming_radius = 800.0
 
 [node name="AttackArea" type="Area2D" parent="."]
 

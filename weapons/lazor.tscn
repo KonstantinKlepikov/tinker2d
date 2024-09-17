@@ -17,6 +17,7 @@ aiming_radius = 600.0
 shape = SubResource("CircleShape2D_kqlbk")
 
 [node name="AimingArea" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AimingArea"]
 shape = SubResource("CircleShape2D_t51as")
