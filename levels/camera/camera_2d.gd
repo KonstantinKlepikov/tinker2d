@@ -3,7 +3,6 @@ extends Camera2D
 var zoom_target: Vector2
 var mouse_start_position = Vector2.ZERO
 var camera_start_position = Vector2.ZERO
-var is_draging: bool = false
 
 
 func _ready():
@@ -26,14 +25,19 @@ func make_zoom(delta) -> void:
 
 func camera_drag():
 	# camera drag
-	if !is_draging and Input.is_action_just_pressed("camera_pan"):
+	if (
+		!Gamevars.is_draging 
+		and Input.is_action_just_pressed("left") 
+		and !Gamevars.in_node
+		and Gamevars.in_map
+		):
 		mouse_start_position = get_viewport().get_mouse_position()
 		camera_start_position = position
-		is_draging = true
+		Gamevars.is_draging = true
 
-	if is_draging and Input.is_action_just_released("camera_pan"):
-		is_draging = false
+	if Gamevars.is_draging and Input.is_action_just_released("left"):
+		Gamevars.is_draging = false
 
-	if is_draging:
+	if Gamevars.is_draging:
 		var move_vector = get_viewport().get_mouse_position() - mouse_start_position
 		position = camera_start_position - move_vector * 1/zoom.x

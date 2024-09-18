@@ -14,7 +14,6 @@ var weapons: Dictionary
 
 func _ready():	
 	build_hero_path()
-	#main_weapon = preload("res://weapons/lazor.tscn").instantiate()
 	weapons['lazor'] = preload("res://weapons/lazor.tscn").instantiate()
 	weapons['rocket'] = preload("res://weapons/rocket.tscn").instantiate()
 	$PathFollow2D/Hero.add_child(weapons['lazor'])

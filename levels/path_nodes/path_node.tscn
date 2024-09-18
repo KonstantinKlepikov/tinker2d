@@ -14,7 +14,7 @@ script = ExtResource("1_am8vr")
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_fjnwo")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["path_points"]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_rmoxw")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
