@@ -10,7 +10,8 @@ func _ready():
 	add_child(lvl)
 
 	hero_and_path = preload("res://actors/hero_path.tscn").instantiate()
-	lvl.add_child(hero_and_path)
+	lvl.add_child(hero_and_path)	
+	hide_path_nodes()
 	
 	# TODO: fixme
 	$CanvasLayer/Bar/Weapon1.text = 'lazor'
@@ -79,3 +80,13 @@ func _on_weapon_2_toggled(toggled_on: bool) -> void:
 		$CanvasLayer/Bar/Weapon1.set_pressed_no_signal(false)
 	else:
 		$CanvasLayer/Bar/Weapon1.toggled(true)
+		
+		
+func hide_path_nodes() -> void:
+	for n in lvl.get_children():
+		if (
+			"path_nodes_group" in n.get_groups() 
+			and n.name != "StartNode" 
+			and n.name != "EndNode"
+			):
+			n.visible = false

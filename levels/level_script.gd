@@ -1,6 +1,5 @@
 extends Node2D
 
-var in_map: bool = false # is mouse in a map
 var line_inside_impass := 0
 @export var start_x: float
 @export var start_y: float
@@ -10,12 +9,12 @@ var line_inside_impass := 0
 
 func _on_color_rect_mouse_entered() -> void:
 	# set is mouse in map
-	in_map = true
+	Gamevars.in_map = true
 
 
 func _on_color_rect_mouse_exited() -> void:
 	# set is mouse out of map
-	in_map = false
+	Gamevars.in_map = false
 
 
 func _on_terrain_impass_area_entered(area: Area2D) -> void:
