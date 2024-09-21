@@ -11,7 +11,7 @@ func _ready():
 
 	hero_and_path = preload("res://actors/hero_path.tscn").instantiate()
 	lvl.add_child(hero_and_path)	
-	hide_path_nodes()
+	hide_strategic()
 	
 	# TODO: fixme
 	$CanvasLayer/Bar/Weapon1.text = 'lazor'
@@ -68,7 +68,9 @@ func _on_weapon_1_toggled(toggled_on: bool) -> void:
 		hero_and_path.main_weapon = hero_and_path.weapons['lazor']
 		$CanvasLayer/Bar/Weapon2.set_pressed_no_signal(false)
 	else:
-		$CanvasLayer/Bar/Weapon2.toggled(true)
+		#$CanvasLayer/Bar/Weapon2.toggled(true)
+		_on_weapon_2_toggled(true)
+		$CanvasLayer/Bar/Weapon2.set_pressed_no_signal(true)
 
 
 func _on_weapon_2_toggled(toggled_on: bool) -> void:
@@ -79,14 +81,16 @@ func _on_weapon_2_toggled(toggled_on: bool) -> void:
 		hero_and_path.main_weapon = hero_and_path.weapons['rocket']
 		$CanvasLayer/Bar/Weapon1.set_pressed_no_signal(false)
 	else:
-		$CanvasLayer/Bar/Weapon1.toggled(true)
+		#$CanvasLayer/Bar/Weapon1.toggled(true)
+		_on_weapon_1_toggled(true)
+		$CanvasLayer/Bar/Weapon1.set_pressed_no_signal(true)
 		
 		
-func hide_path_nodes() -> void:
+func hide_strategic() -> void:
 	for n in lvl.get_children():
 		if (
 			"path_nodes_group" in n.get_groups() 
 			and n.name != "StartNode" 
 			and n.name != "EndNode"
-			):
+			) or "spawn_zone" in n.get_groups():
 			n.visible = false

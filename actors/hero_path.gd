@@ -18,7 +18,6 @@ func _ready():
 	weapons['rocket'] = preload("res://weapons/rocket.tscn").instantiate()
 	$PathFollow2D/Hero.add_child(weapons['lazor'])
 	$PathFollow2D/Hero.add_child(weapons['rocket'])
-	main_weapon = weapons['lazor']
 
 
 func _process(delta: float) -> void:

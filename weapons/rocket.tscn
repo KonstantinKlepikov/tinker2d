@@ -9,8 +9,8 @@
 [node name="Rocket" type="Node2D"]
 visible = false
 script = ExtResource("1_3hthx")
-attack_radius = 1200.0
-aiming_radius = 800.0
+attack_radius = 800.0
+aiming_radius = 1200.0
 
 [node name="AttackArea" type="Area2D" parent="."]
 

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://ciw0fetnrlk3j"]
+[gd_scene load_steps=7 format=3 uid="uid://ciw0fetnrlk3j"]
 
 [ext_resource type="Script" path="res://levels/level_script.gd" id="1_glqkq"]
 [ext_resource type="PackedScene" uid="uid://4uqdhny6t0ij" path="res://levels/components/terrain_fast.tscn" id="2_6toqj"]
 [ext_resource type="PackedScene" uid="uid://bt5ycocupu6av" path="res://levels/camera/camera_2d.tscn" id="2_gp23p"]
 [ext_resource type="PackedScene" uid="uid://k1up0xtnr780" path="res://levels/components/terrain_slow.tscn" id="3_40cjo"]
 [ext_resource type="PackedScene" uid="uid://c43lcmkw1xo7l" path="res://levels/components/terrain_impass.tscn" id="4_qirdc"]
+[ext_resource type="PackedScene" uid="uid://f2wq1w5s8d8g" path="res://levels/components/spawning_zone.tscn" id="6_6xluv"]
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_glqkq")
@@ -44,6 +45,15 @@ position = Vector2(-104, 200)
 
 [node name="TerrainImpass3" parent="." instance=ExtResource("4_qirdc")]
 position = Vector2(168, -1344)
+
+[node name="SpawningZone" parent="." instance=ExtResource("6_6xluv")]
+position = Vector2(259, -412)
+
+[node name="SpawningZone2" parent="." instance=ExtResource("6_6xluv")]
+position = Vector2(425, -1120)
+
+[node name="SpawningZone3" parent="." instance=ExtResource("6_6xluv")]
+position = Vector2(74, -1812)
 
 [connection signal="mouse_entered" from="ColorRect" to="." method="_on_color_rect_mouse_entered"]
 [connection signal="mouse_exited" from="ColorRect" to="." method="_on_color_rect_mouse_exited"]

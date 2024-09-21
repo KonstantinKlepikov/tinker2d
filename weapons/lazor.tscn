@@ -7,6 +7,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_t51as"]
 
 [node name="Lazor" type="Node2D"]
+visible = false
 script = ExtResource("1_4jmna")
 attack_radius = 400.0
 aiming_radius = 600.0
