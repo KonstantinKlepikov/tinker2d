@@ -3,24 +3,37 @@ extends Node2D
 var hero_and_path: Path2D
 var lvl: Node2D # map
 
-
 func _ready():
 	
+	# level
 	lvl = Gamevars.current_map
 	add_child(lvl)
 
+	# hero
 	hero_and_path = preload("res://actors/hero_path.tscn").instantiate()
-	lvl.add_child(hero_and_path)	
+	lvl.add_child(hero_and_path)
+	
 	hide_strategic()
 	
-	# TODO: fixme
+	# weapons
 	$CanvasLayer/Bar/Weapon1.text = 'lazor'
 	$CanvasLayer/Bar/Weapon2.text = 'rocket'
 	hero_and_path.main_weapon = hero_and_path.weapons['lazor']
 	hero_and_path.main_weapon.visible = true
+	
+	# init enemies
+	var homing_enemy = preload("res://actors/homing_enemy.tscn")
+		
+	for zone in lvl.find_children("HomingSpawningZone*"):
+		var h_e = homing_enemy.instantiate()
+		h_e.position = zone.center
+		lvl.add_child(h_e)
 
 
 func _process(_delta: float) -> void:
+	# target position for enemy
+	Gamevars.hero_pos = hero_and_path.get_node("PathFollow2D/Hero").global_position
+	
 	$CanvasLayer/GameInfo/SpeedCoef.text = (
 		"Speed coef: " + \
 		str(hero_and_path.current_speed_coef  * \
@@ -68,7 +81,6 @@ func _on_weapon_1_toggled(toggled_on: bool) -> void:
 		hero_and_path.main_weapon = hero_and_path.weapons['lazor']
 		$CanvasLayer/Bar/Weapon2.set_pressed_no_signal(false)
 	else:
-		#$CanvasLayer/Bar/Weapon2.toggled(true)
 		_on_weapon_2_toggled(true)
 		$CanvasLayer/Bar/Weapon2.set_pressed_no_signal(true)
 
@@ -81,7 +93,6 @@ func _on_weapon_2_toggled(toggled_on: bool) -> void:
 		hero_and_path.main_weapon = hero_and_path.weapons['rocket']
 		$CanvasLayer/Bar/Weapon1.set_pressed_no_signal(false)
 	else:
-		#$CanvasLayer/Bar/Weapon1.toggled(true)
 		_on_weapon_1_toggled(true)
 		$CanvasLayer/Bar/Weapon1.set_pressed_no_signal(true)
 		

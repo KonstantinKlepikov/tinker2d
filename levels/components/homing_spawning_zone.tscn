@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://f2wq1w5s8d8g"]
+
+[ext_resource type="Script" path="res://levels/components/homing_spawning_zone.gd" id="1_bt825"]
+[ext_resource type="Texture2D" uid="uid://dp3rfgixqbqos" path="res://assets/dead.png" id="2_27u6j"]
+
+[sub_resource type="Curve2D" id="Curve2D_llssq"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 402, 119, 0, 0, 0, 0, 472, 129, 0, 0, 0, 0, 537, 154, 0, 0, 0, 0, 591, 197, 0, 0, 0, 0, 634, 254, 0, 0, 0, 0, 661, 318, 0, 0, 0, 0, 669, 384, 0, 0, 0, 0, 661, 459, 0, 0, 0, 0, 634, 521, 0, 0, 0, 0, 594, 573, 0, 0, 0, 0, 538, 616, 0, 0, 0, 0, 473, 643, 0, 0, 0, 0, 402, 654, 0, 0, 0, 0, 335, 645, 0, 0, 0, 0, 274, 620, 0, 0, 0, 0, 219, 578, 0, 0, 0, 0, 172, 519, 0, 0, 0, 0, 148, 457, 0, 0, 0, 0, 137, 389, 0, 0, 0, 0, 147, 316, 0, 0, 0, 0, 175, 250, 0, 0, 0, 0, 216, 198, 0, 0, 0, 0, 270, 153, 0, 0, 0, 0, 334, 129, 0, 0, 0, 0, 402, 119)
+}
+point_count = 25
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w1r83"]
+radius = 266.12
+
+[node name="HomingSpawningZone" type="Area2D" groups=["spawn_zone"]]
+script = ExtResource("1_bt825")
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(-403, -387)
+curve = SubResource("Curve2D_llssq")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+texture_repeat = 2
+color = Color(1, 1, 1, 0.509804)
+texture = ExtResource("2_27u6j")
+texture_scale = Vector2(1.5, 1.5)
+texture_rotation = 0.785398
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_w1r83")

@@ -6,6 +6,7 @@ var line: Line2D # current path line
 var in_node := false # is mouse inside node
 var is_draging: bool = false # is dragging vieport
 var in_map: bool = false # is mouse in a map
+var hero_pos: Vector2
 
 
 # game constants
