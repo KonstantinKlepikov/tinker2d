@@ -21,17 +21,13 @@ func _ready():
 	hero_and_path.main_weapon = hero_and_path.weapons['lazor']
 	hero_and_path.main_weapon.visible = true
 	
-	# init enemies
-	var homing_enemy = preload("res://actors/homing_enemy.tscn")
-		
-	for zone in lvl.find_children("HomingSpawningZone*"):
-		var h_e = homing_enemy.instantiate()
-		h_e.position = zone.center
-		lvl.add_child(h_e)
+	# enemies
+	for enemy in lvl.find_children("*Enemy*"):
+		enemy.visible = true
 
 
 func _process(_delta: float) -> void:
-	# target position for enemy
+	# global hero position for enemy targets
 	Gamevars.hero_pos = hero_and_path.get_node("PathFollow2D/Hero").global_position
 	
 	$CanvasLayer/GameInfo/SpeedCoef.text = (

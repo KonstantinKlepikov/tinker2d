@@ -25,13 +25,17 @@ func _process(delta: float) -> void:
 	if is_first_run:
 		$PathFollow2D.progress_ratio += 0.0
 		is_first_run = false
+		Gamevars.is_hero_on_start_or_end = true
+
 	if is_run:
+		Gamevars.is_hero_on_start_or_end = false
 		$PathFollow2D.progress_ratio += (
 			delta * Gamevars.HERO_SPEED * current_speed_coef * current_bust_coef
 		)
 		if $PathFollow2D.progress_ratio == 1.0:
-			is_at_end = true
+			Gamevars.is_hero_on_start_or_end = true
 			is_run = false
+			is_at_end = true
 		
 	if is_run and hero_energy > 0:
 		reduce_speed()

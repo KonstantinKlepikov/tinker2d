@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ciw0fetnrlk3j"]
+[gd_scene load_steps=8 format=3 uid="uid://ciw0fetnrlk3j"]
 
 [ext_resource type="Script" path="res://levels/level_script.gd" id="1_glqkq"]
 [ext_resource type="PackedScene" uid="uid://4uqdhny6t0ij" path="res://levels/components/terrain_fast.tscn" id="2_6toqj"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://k1up0xtnr780" path="res://levels/components/terrain_slow.tscn" id="3_40cjo"]
 [ext_resource type="PackedScene" uid="uid://c43lcmkw1xo7l" path="res://levels/components/terrain_impass.tscn" id="4_qirdc"]
 [ext_resource type="PackedScene" uid="uid://f2wq1w5s8d8g" path="res://levels/components/homing_spawning_zone.tscn" id="6_6xluv"]
+[ext_resource type="PackedScene" uid="uid://dmert4r7xxxwo" path="res://actors/homing_enemy.tscn" id="7_6a4wp"]
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_glqkq")
@@ -47,16 +48,40 @@ position = Vector2(-104, 200)
 position = Vector2(168, -1344)
 
 [node name="HomingSpawningZone" parent="." instance=ExtResource("6_6xluv")]
-position = Vector2(403, 0)
-num_of_enemies = 3
+position = Vector2(407, 11)
 
 [node name="HomingSpawningZone2" parent="." instance=ExtResource("6_6xluv")]
-position = Vector2(880, -736)
-num_of_enemies = 4
+position = Vector2(761, -610)
 
 [node name="HomingSpawningZone3" parent="." instance=ExtResource("6_6xluv")]
-position = Vector2(505, -1364)
-num_of_enemies = 3
+position = Vector2(465, -1319)
+
+[node name="HomingEnemy" parent="." instance=ExtResource("7_6a4wp")]
+position = Vector2(314, -179)
+
+[node name="HomingEnemy2" parent="." instance=ExtResource("7_6a4wp")]
+position = Vector2(260, -69)
+
+[node name="HomingEnemy3" parent="." instance=ExtResource("7_6a4wp")]
+position = Vector2(498, 110)
+
+[node name="HomingEnemy4" parent="." instance=ExtResource("7_6a4wp")]
+position = Vector2(669, -493)
+
+[node name="HomingEnemy5" parent="." instance=ExtResource("7_6a4wp")]
+position = Vector2(834, -568)
+
+[node name="HomingEnemy6" parent="." instance=ExtResource("7_6a4wp")]
+position = Vector2(999, -653)
+
+[node name="HomingEnemy7" parent="." instance=ExtResource("7_6a4wp")]
+position = Vector2(307, -1156)
+
+[node name="HomingEnemy8" parent="." instance=ExtResource("7_6a4wp")]
+position = Vector2(491, -1124)
+
+[node name="HomingEnemy9" parent="." instance=ExtResource("7_6a4wp")]
+position = Vector2(635, -1193)
 
 [connection signal="mouse_entered" from="ColorRect" to="." method="_on_color_rect_mouse_entered"]
 [connection signal="mouse_exited" from="ColorRect" to="." method="_on_color_rect_mouse_exited"]
