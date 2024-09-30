@@ -2,8 +2,9 @@ extends Area2D
 
 @export var speed := 150
 @export var steer_force := 30.0
-@export var activating_radius := 400
-@export var damage: float
+@export var activating_radius := 400.0
+@export var damage: float = 200.0
+@export var health: int = 200
 
 var velocity = Vector2.ZERO
 var acceleration = Vector2.ZERO
@@ -16,9 +17,13 @@ func _ready() -> void:
 	$ActivatingArea/CollisionShape2D.shape.radius = activating_radius
 
 
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	# calculate direction and new position, closest to target
-	if not Gamevars.is_hero_on_start_or_end and is_act:
+	if (
+		not Gamevars.is_hero_on_start_or_end 
+		and is_act 
+		and not Gamevars.is_hero_empty
+		):
 		acceleration += retarget()
 		velocity += acceleration * delta
 		velocity = velocity.limit_length(speed)
@@ -37,15 +42,15 @@ func retarget() -> Vector2:
 
 
 func _on_hero_body_entered(body: Node2D) -> void:
-	# explode whrn collide with hero
+	# impact and explode when collide with hero
 	if "hero" in body.get_groups():
+		body.get_parent().get_parent().hero_energy -= damage
 		explode()
 		
 
 func _on_activating_area_hero_body_entered(body: Node2D) -> void:
 	# activate if enemy in range
-	if "hero" in body.get_groups():
-		print("here")
+	if "hero" in body.get_groups() and not Gamevars.is_hero_on_start_or_end:
 		is_act = true
 
 

@@ -6,7 +6,6 @@ var hero_energy = Gamevars.HERO_START_ENERGY
 var energy_consume: float = 0.0
 var is_run := false # run or wait
 var is_at_end := false
-var is_first_run := true # init first placement of hero
 var is_busted := false
 var main_weapon: Node2D
 var weapons: Dictionary
@@ -18,14 +17,12 @@ func _ready():
 	weapons['rocket'] = preload("res://weapons/rocket.tscn").instantiate()
 	$PathFollow2D/Hero.add_child(weapons['lazor'])
 	$PathFollow2D/Hero.add_child(weapons['rocket'])
+	
+	$PathFollow2D.progress_ratio += 0.0
+	Gamevars.is_hero_on_start_or_end = true
 
 
 func _process(delta: float) -> void:
-	# check can hero run and calculate speed of shift and energy redundance
-	if is_first_run:
-		$PathFollow2D.progress_ratio += 0.0
-		is_first_run = false
-		Gamevars.is_hero_on_start_or_end = true
 
 	if is_run:
 		Gamevars.is_hero_on_start_or_end = false
@@ -39,9 +36,11 @@ func _process(delta: float) -> void:
 		
 	if is_run and hero_energy > 0:
 		reduce_speed()
-		if hero_energy <= 0:
-			hero_energy = 0
-			is_run = false
+	
+	if is_run and hero_energy <= 0:
+		hero_energy = 0
+		is_run = false
+		Gamevars.is_hero_empty = true
 			
 	if not is_run:
 		energy_consume = 0.0

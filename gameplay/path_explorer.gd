@@ -24,6 +24,7 @@ func _ready():
 	# enemies
 	for enemy in lvl.find_children("*Enemy*"):
 		enemy.visible = true
+		enemy.set_process(true)
 
 
 func _process(_delta: float) -> void:
