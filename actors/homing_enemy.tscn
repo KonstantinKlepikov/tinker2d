@@ -27,4 +27,6 @@ shape = SubResource("RectangleShape2D_bhnb2")
 shape = SubResource("CircleShape2D_s0151")
 
 [connection signal="body_entered" from="." to="." method="_on_hero_body_entered"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="body_entered" from="ActivatingArea" to="." method="_on_activating_area_hero_body_entered"]

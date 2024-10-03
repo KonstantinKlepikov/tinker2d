@@ -9,6 +9,7 @@ extends Area2D
 var velocity = Vector2.ZERO
 var acceleration = Vector2.ZERO
 var is_act := false
+var is_visible_range := false
 
 
 func _ready() -> void:
@@ -32,7 +33,8 @@ func _process(delta: float) -> void:
 		
 
 func _draw() -> void:
-	draw_aiming_radius()
+	if is_visible_range:
+		draw_aiming_radius()
 
 
 func retarget() -> Vector2:
@@ -69,3 +71,13 @@ func draw_aiming_radius() -> void:
 		Gamevars.AIMING_RADIUS_COLOR, 
 		false
 	)
+
+
+func _on_mouse_entered():
+	is_visible_range = true
+	queue_redraw()
+
+
+func _on_mouse_exited():
+	is_visible_range = false
+	queue_redraw()
