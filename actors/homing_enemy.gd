@@ -75,9 +75,11 @@ func draw_aiming_radius() -> void:
 
 func _on_mouse_entered():
 	is_visible_range = true
+	Gamevars.in_enemy = true
 	queue_redraw()
 
 
 func _on_mouse_exited():
 	is_visible_range = false
+	Gamevars.in_enemy = false
 	queue_redraw()

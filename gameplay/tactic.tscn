@@ -30,7 +30,7 @@ text = "bust"
 
 [node name="Stop" type="Button" parent="CanvasLayer/Bar"]
 layout_mode = 2
-text = "stop"
+text = "wait"
 
 [node name="Weapon1" type="CheckButton" parent="CanvasLayer/Bar"]
 layout_mode = 2

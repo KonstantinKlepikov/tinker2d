@@ -2,6 +2,7 @@ extends Node2D
 
 var hero_and_path: Path2D
 var lvl: Node2D # map
+var triangle_cross = load("res://assets/lazor_cross.png")
 
 func _ready():
 	
@@ -46,6 +47,12 @@ func _process(_delta: float) -> void:
 		$CanvasLayer/GameInfo/CanBust.text = "Cant bust"
 	else:
 		$CanvasLayer/GameInfo/CanBust.text = "Bust available"
+		
+	# change aiming cross
+	if Gamevars.in_enemy:
+		Input.set_custom_mouse_cursor(triangle_cross)
+	else:
+		Input.set_custom_mouse_cursor(null)
 
 
 func _on_run_pressed():
