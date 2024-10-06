@@ -2,7 +2,6 @@ extends Node2D
 
 var hero_and_path: Path2D
 var lvl: Node2D # map
-var triangle_cross = load("res://assets/lazor_cross.png")
 
 func _ready():
 	
@@ -50,8 +49,12 @@ func _process(_delta: float) -> void:
 		
 	# change aiming cross
 	if Gamevars.in_enemy:
-		Input.set_custom_mouse_cursor(triangle_cross)
+		$CanvasLayer/Cross.global_position = get_viewport().get_mouse_position()
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+		$CanvasLayer/Cross.visible = true
 	else:
+		$CanvasLayer/Cross.visible = false
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		Input.set_custom_mouse_cursor(null)
 
 
