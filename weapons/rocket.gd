@@ -9,6 +9,8 @@ extends Node2D
 @export var jamming_time: float
 
 var aiming_queue: Array[Area2D] = []
+var in_aiming_range: Array[Area2D] = []
+var in_attack_range: Array[Area2D] = []
 
 
 func _ready():	
@@ -35,3 +37,27 @@ func draw_attack_radius() -> void:
 		Gamevars.ATTACK_RADIUS_COLOR, 
 		false
 	)
+
+
+func _on_attack_area_body_entered(body: Node2D) -> void:
+	# add enemy to attack range
+	if "enemy" in body.get_groups():
+		in_attack_range.append(body)
+
+
+func _on_attack_area_body_exited(body: Node2D) -> void:
+	# remove enemy from attack range
+	if "enemy" in body.get_groups():
+		in_attack_range.erase(body)
+
+
+func _on_aiming_area_body_entered(body: Node2D) -> void:
+	# add enemy to aiming range
+	if "enemy" in body.get_groups():
+		in_aiming_range.append(body)
+
+
+func _on_aiming_area_body_exited(body: Node2D) -> void:
+	# remove enemy from aiming range
+	if "enemy" in body.get_groups():
+		in_aiming_range.erase(body)

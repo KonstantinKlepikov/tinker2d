@@ -21,3 +21,8 @@ shape = SubResource("CircleShape2D_kqlbk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AimingArea"]
 shape = SubResource("CircleShape2D_t51as")
+
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]
+[connection signal="body_entered" from="AimingArea" to="." method="_on_aiming_area_body_entered"]
+[connection signal="body_exited" from="AimingArea" to="." method="_on_aiming_area_body_exited"]

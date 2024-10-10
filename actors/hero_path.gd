@@ -44,13 +44,16 @@ func _process(delta: float) -> void:
 			
 	if not is_run:
 		energy_consume = 0.0
+		
+	# aiming of enemy
+	if Input.is_action_just_pressed("left") and Gamevars.current_mouse_in_enemy:
+		aim_enemy(Gamevars.current_mouse_in_enemy)
 
 
 func build_hero_path():
 	# build path from line vector
 	for i in Gamevars.line.points:
 		curve.add_point(i)
-		
 
 func reduce_speed():
 	energy_consume = Gamevars.HERO_SPEED_REDUCER - current_speed_coef
@@ -58,3 +61,14 @@ func reduce_speed():
 		hero_energy -= energy_consume
 	else:
 		hero_energy -= Gamevars.MIN_HERO_SPEED
+
+
+func aim_enemy(enemy: Area2D) -> void:
+	# add target enemy to aiming queue or remove it from queue
+	var enemy_ind = main_weapon.aiming_queue.find(enemy)
+	if enemy_ind != -1:
+		main_weapon.aiming_queue.remove_at(enemy_ind)
+	else:
+		if enemy in main_weapon.in_aiming_range:
+			main_weapon.aiming_queue.append(enemy)
+	print(main_weapon.aiming_queue)

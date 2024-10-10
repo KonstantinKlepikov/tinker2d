@@ -8,11 +8,11 @@ size = Vector2(32, 32)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s0151"]
 
-[node name="HomingEnemy" type="Area2D"]
+[node name="HomingEnemy" type="Area2D" groups=["enemy"]]
 disable_mode = 1
 script = ExtResource("1_26ym1")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["enemy"]]
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_0om2w")
 

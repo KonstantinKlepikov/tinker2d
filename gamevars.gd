@@ -9,7 +9,7 @@ var in_map: bool = false # is mouse on a map
 var hero_pos: Vector2 # global position of hero
 var is_hero_on_start_or_end: bool # check can be act something with hero
 var is_hero_empty: bool = false # check is not hero energy empty
-var current_enemy: Area2D = null # current enemy where mouse in
+var current_mouse_in_enemy: Area2D = null # current enemy where mouse in
 
 
 # game constants
