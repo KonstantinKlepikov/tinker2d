@@ -4,12 +4,12 @@ extends Node
 var current_map: Node2D # current map instance
 var line: Line2D # current path line
 var in_node := false # is mouse inside node
-var in_enemy := false # is mouse inside enemy node
 var is_draging: bool = false # is dragging vieport
 var in_map: bool = false # is mouse on a map
 var hero_pos: Vector2 # global position of hero
 var is_hero_on_start_or_end: bool # check can be act something with hero
 var is_hero_empty: bool = false # check is not hero energy empty
+var current_enemy: Area2D = null # current enemy where mouse in
 
 
 # game constants

@@ -1,6 +1,5 @@
 extends Node2D
 
-
 @export var attack_radius: float
 @export var aiming_radius: float
 @export var damage: float
@@ -8,6 +7,8 @@ extends Node2D
 @export var rate: float # shot per second
 @export var jamming_probability: float
 @export var jamming_time: float
+
+var aiming_queue: Array[Area2D] = []
 
 
 func _ready():	

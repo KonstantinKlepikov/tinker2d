@@ -3,6 +3,7 @@ extends Node2D
 var hero_and_path: Path2D
 var lvl: Node2D # map
 
+
 func _ready():
 	
 	# level
@@ -48,7 +49,7 @@ func _process(_delta: float) -> void:
 		$CanvasLayer/GameInfo/CanBust.text = "Bust available"
 		
 	# change aiming cross
-	if Gamevars.in_enemy:
+	if Gamevars.current_enemy:
 		$CanvasLayer/Cross.global_position = get_viewport().get_mouse_position()
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		$CanvasLayer/Cross.visible = true
@@ -56,6 +57,10 @@ func _process(_delta: float) -> void:
 		$CanvasLayer/Cross.visible = false
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		Input.set_custom_mouse_cursor(null)
+	
+	# aiming of enemy
+	if Input.is_action_just_pressed("left") and Gamevars.current_enemy:
+		aim_enemy(Gamevars.current_enemy)
 
 
 func _on_run_pressed():
@@ -112,3 +117,12 @@ func hide_strategic() -> void:
 			and n.name != "EndNode"
 			) or "spawn_zone" in n.get_groups():
 			n.visible = false
+			
+
+func aim_enemy(enemy: Area2D) -> void:
+	# add target enemy to aiming queue or remove it from queue
+	var enemy_ind = hero_and_path.main_weapon.aiming_queue.find(enemy)
+	if enemy_ind != -1:
+		hero_and_path.main_weapon.aiming_queue.remove_at(enemy_ind)
+	else:
+		hero_and_path.main_weapon.aiming_queue.append(enemy)
