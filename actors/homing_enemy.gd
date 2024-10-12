@@ -1,10 +1,10 @@
 extends Area2D
 
-@export var speed := 150
-@export var steer_force := 30.0
-@export var activating_radius := 400.0
-@export var damage: float = 200.0
-@export var health: int = 200
+@export var speed: float = Gamevars.HOMING_ENEMY_SPEED
+@export var steer_force: float = Gamevars.HOMING_ENEMY_STEER_FORCE
+@export var activating_radius: float = Gamevars.HOMING_ENEMY_ACTIVATION_RADIUS
+@export var damage: float = Gamevars.HOMING_ENEMY_DAMAGE
+@export var health: int = Gamevars.HOMING_ENEMY_HEALTH
 
 var velocity = Vector2.ZERO
 var acceleration = Vector2.ZERO

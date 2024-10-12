@@ -1,8 +1,9 @@
 extends Path2D
 
-var current_speed_coef: float = Gamevars.TERRAIN_BASE_COEF
+@export var current_speed_coef: float = Gamevars.TERRAIN_BASE_COEF
+@export var hero_energy: int = Gamevars.HERO_START_ENERGY
+
 var current_bust_coef: float = 1.0
-var hero_energy = Gamevars.HERO_START_ENERGY
 var energy_consume: float = 0.0
 var is_run := false # run or wait
 var is_at_end := false
@@ -64,11 +65,11 @@ func reduce_speed():
 
 
 func aim_enemy(enemy: Area2D) -> void:
-	# add target enemy to aiming queue or remove it from queue
-	var enemy_ind = main_weapon.aiming_queue.find(enemy)
-	if enemy_ind != -1:
-		main_weapon.aiming_queue.remove_at(enemy_ind)
+	# add or remove enemy to aiming_queue
+	var key = enemy.name + "," + main_weapon.name
+	var enemy_in_q = Gamevars.aiming_queue.get(key)
+	if enemy_in_q:
+		Gamevars.aiming_queue.erase(key)
 	else:
 		if enemy in main_weapon.in_aiming_range:
-			main_weapon.aiming_queue.append(enemy)
-	print(main_weapon.aiming_queue)
+			Gamevars.aiming_queue[key] = enemy

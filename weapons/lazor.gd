@@ -8,7 +8,6 @@ extends Node2D
 @export var jamming_probability: float
 @export var jamming_time: float
 
-var aiming_queue: Array[Area2D] = []
 var in_aiming_range: Array[Area2D] = []
 var in_attack_range: Array[Area2D] = []
 
@@ -40,25 +39,25 @@ func draw_attack_radius() -> void:
 	)
 
 
-func _on_attack_area_body_entered(body: Node2D) -> void:
+func _on_attack_area_area_entered(area: Area2D) -> void:
 	# add enemy to attack range
-	if "enemy" in body.get_groups():
-		in_attack_range.append(body)
+	if "enemy" in area.get_groups():
+		in_attack_range.append(area)
 
 
-func _on_attack_area_body_exited(body: Node2D) -> void:
+func _on_attack_area_area_exited(area: Area2D) -> void:
 	# remove enemy from attack range
-	if "enemy" in body.get_groups():
-		in_attack_range.erase(body)
+	if "enemy" in area.get_groups():
+		in_attack_range.erase(area)
 
 
-func _on_aiming_area_body_entered(body: Node2D) -> void:
+func _on_aiming_area_area_entered(area: Area2D) -> void:
 	# add enemy to aiming range
-	if "enemy" in body.get_groups():
-		in_aiming_range.append(body)
+	if "enemy" in area.get_groups():
+		in_aiming_range.append(area)
 
 
-func _on_aiming_area_body_exited(body: Node2D) -> void:
+func _on_aiming_area_area_exited(area: Area2D) -> void:
 	# remove enemy from aiming range
-	if "enemy" in body.get_groups():
-		in_aiming_range.erase(body)
+	if "enemy" in area.get_groups():
+		in_aiming_range.erase(area)

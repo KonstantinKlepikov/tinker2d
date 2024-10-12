@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmert4r7xxxwo"]
+[gd_scene load_steps=6 format=3 uid="uid://dmert4r7xxxwo"]
 
 [ext_resource type="Texture2D" uid="uid://cyujtlavmo66y" path="res://assets/godot_prototype_assets_by_kpids/classic/tiles/checkerboard.png" id="1_0om2w"]
 [ext_resource type="Script" path="res://actors/homing_enemy.gd" id="1_26ym1"]
+[ext_resource type="Script" path="res://actors/aiming_label.gd" id="3_thff0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhnb2"]
 size = Vector2(32, 32)
@@ -25,6 +26,12 @@ shape = SubResource("RectangleShape2D_bhnb2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ActivatingArea"]
 shape = SubResource("CircleShape2D_s0151")
+
+[node name="AimingLabel" type="Label" parent="."]
+offset_top = 19.0
+offset_right = 42.0
+offset_bottom = 56.0
+script = ExtResource("3_thff0")
 
 [connection signal="body_entered" from="." to="." method="_on_hero_body_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

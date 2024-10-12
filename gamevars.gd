@@ -10,11 +10,12 @@ var hero_pos: Vector2 # global position of hero
 var is_hero_on_start_or_end: bool # check can be act something with hero
 var is_hero_empty: bool = false # check is not hero energy empty
 var current_mouse_in_enemy: Area2D = null # current enemy where mouse in
+var aiming_queue: Dictionary = {} # current aiming queue
 
 
 # game constants
-const HERO_START_ENERGY: int = 1500
-const HERO_SPEED: float = 0.04
+const HERO_START_ENERGY: int = 4000
+const HERO_SPEED: float = 0.015
 
 const TERRAIN_BASE_COEF: float = 1.0
 const TERRAIN_SPEED_COEF_05: float = 0.5
@@ -29,3 +30,9 @@ const BUST_TIMEOUT: float = 5.0
 
 const ATTACK_RADIUS_COLOR := Color.RED
 const AIMING_RADIUS_COLOR := Color.YELLOW
+
+const HOMING_ENEMY_SPEED: float = 60.0
+const HOMING_ENEMY_STEER_FORCE: float = 30.0
+const HOMING_ENEMY_ACTIVATION_RADIUS: float = 400.0
+const HOMING_ENEMY_DAMAGE: float = 400.0
+const HOMING_ENEMY_HEALTH: int = 200
