@@ -1,86 +1,21 @@
-[gd_scene load_steps=16 format=3 uid="uid://uxvj55ixgl54"]
+[gd_scene load_steps=3 format=3 uid="uid://uxvj55ixgl54"]
 
 [ext_resource type="Script" path="res://weapons/lazor_beam.gd" id="1_cs1tn"]
-[ext_resource type="Texture2D" uid="uid://b5uk45y3s7uoe" path="res://assets/glowing_circle.png" id="2_tx2v5"]
 
-[sub_resource type="Gradient" id="Gradient_s5aci"]
-offsets = PackedFloat32Array(0.493827, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_2ofhl"]
-gradient = SubResource("Gradient_s5aci")
-width = 64
-
-[sub_resource type="Curve" id="Curve_63pxy"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.495413, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_geuag"]
-width = 2048
-curve = SubResource("Curve_63pxy")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1nw73"]
-initial_velocity_min = 100.0
-initial_velocity_max = 100.0
-gravity = Vector3(0, 0, 0)
-scale_min = 0.5
-scale_max = 0.5
-scale_curve = SubResource("CurveTexture_geuag")
-color_ramp = SubResource("GradientTexture1D_2ofhl")
-
-[sub_resource type="Curve" id="Curve_03bn1"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.495413, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_81vnk"]
-curve = SubResource("Curve_03bn1")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l8b1i"]
-particle_flag_align_y = true
-particle_flag_disable_z = true
-emission_shape_scale = Vector3(60, 20, 1)
-direction = Vector3(-1, 0, 0)
-gravity = Vector3(0, 0, 0)
-tangential_accel_min = 100.0
-tangential_accel_max = 100.0
-scale_min = 0.3
-scale_max = 0.3
-scale_curve = SubResource("CurveTexture_81vnk")
-
-[sub_resource type="Gradient" id="Gradient_rvu6i"]
-offsets = PackedFloat32Array(0.567901, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_m766e"]
-gradient = SubResource("Gradient_rvu6i")
-width = 64
-
-[sub_resource type="Curve" id="Curve_1vxy2"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.495413, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_xc6t2"]
-width = 2048
-curve = SubResource("Curve_1vxy2")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7j23a"]
-particle_flag_disable_z = true
-spread = 50.0
-initial_velocity_min = 300.0
-initial_velocity_max = 300.0
-gravity = Vector3(0, 0, 0)
-scale_min = 0.5
-scale_max = 0.5
-scale_curve = SubResource("CurveTexture_xc6t2")
-color_ramp = SubResource("GradientTexture1D_m766e")
+[sub_resource type="Environment" id="Environment_mc05e"]
+background_mode = 3
+glow_enabled = true
+glow_strength = 0.64
+glow_blend_mode = 0
 
 [node name="LazorBeam" type="RayCast2D"]
 target_position = Vector2(0, 0)
 script = ExtResource("1_cs1tn")
 
 [node name="Line2D" type="Line2D" parent="."]
-points = PackedVector2Array(0, 0, 100, 0)
-default_color = Color(1, 0.501961, 1, 1)
+points = PackedVector2Array(40, 0, 100, 0)
+width = 8.0
+default_color = Color(18.378, 72.973, 0, 1)
 texture_mode = 2
 joint_mode = 2
 begin_cap_mode = 2
@@ -88,26 +23,5 @@ end_cap_mode = 2
 sharp_limit = 8.0
 antialiased = true
 
-[node name="CastingPaticles" type="GPUParticles2D" parent="."]
-emitting = false
-process_material = SubResource("ParticleProcessMaterial_1nw73")
-texture = ExtResource("2_tx2v5")
-lifetime = 0.3
-visibility_rect = Rect2(0, 20, 30, 40)
-
-[node name="BeamParticles" type="GPUParticles2D" parent="."]
-emitting = false
-amount = 50
-process_material = SubResource("ParticleProcessMaterial_l8b1i")
-texture = ExtResource("2_tx2v5")
-randomness = 1.0
-visibility_rect = Rect2(-2500, -2500, 5000, 5000)
-
-[node name="CollisionParticles" type="GPUParticles2D" parent="."]
-show_behind_parent = true
-emitting = false
-amount = 16
-process_material = SubResource("ParticleProcessMaterial_7j23a")
-texture = ExtResource("2_tx2v5")
-lifetime = 0.3
-visibility_rect = Rect2(-2500, -2500, 5000, 5000)
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_mc05e")

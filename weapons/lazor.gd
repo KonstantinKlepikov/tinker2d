@@ -24,7 +24,7 @@ func _draw() -> void:
 	
 func draw_aiming_radius() -> void:
 	draw_circle(
-		Vector2(0, 0), 
+		Vector2(0, 0),
 		aiming_radius, 
 		Gamevars.AIMING_RADIUS_COLOR, 
 		false
@@ -37,6 +37,10 @@ func draw_attack_radius() -> void:
 		Gamevars.ATTACK_RADIUS_COLOR, 
 		false
 	)
+	
+
+func fire() -> void:
+	$LazorBeam.is_casting = true
 
 
 func _on_attack_area_area_entered(area: Area2D) -> void:

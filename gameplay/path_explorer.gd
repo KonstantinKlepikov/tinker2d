@@ -17,10 +17,12 @@ func _ready():
 	hide_strategic()
 	
 	# weapons
+	# TODO: fix - sent in hero_path list of weapons to instantiate
 	$CanvasLayer/Bar/Weapon1.text = 'lazor'
 	$CanvasLayer/Bar/Weapon2.text = 'rocket'
 	hero_and_path.main_weapon = hero_and_path.weapons['lazor']
 	hero_and_path.main_weapon.visible = true
+	hero_and_path.weapons['lazor'].fire()
 	
 	# enemies
 	for enemy in lvl.find_children("*Enemy*"):
