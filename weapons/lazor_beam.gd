@@ -1,7 +1,6 @@
-#extends RayCast2D
 extends Node2D
 
-@export var growth_time := 0.2 # duration of the tween animation in seconds
+@export var growth_time := 0.1 # duration of the tween animation in seconds
 @export var max_width := 8 # max width of lazor beam
 
 var is_casting := false
@@ -18,6 +17,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if is_casting and is_instance_valid(enemy):
 		$Line2D.points[1] = to_local(enemy.position)
+		enemy.health -= get_parent().damage
 		
 	if is_casting and not is_instance_valid(enemy):
 		disappear()
@@ -34,7 +34,6 @@ func appear(target: Area2D) -> void:
 
 
 func disappear() -> void:
-
 	is_casting = false
 	if tween and tween.is_running():
 		tween.kill()

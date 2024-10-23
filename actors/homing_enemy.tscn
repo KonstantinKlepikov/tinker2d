@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmert4r7xxxwo"]
+[gd_scene load_steps=7 format=3 uid="uid://dmert4r7xxxwo"]
 
 [ext_resource type="Texture2D" uid="uid://cyujtlavmo66y" path="res://assets/godot_prototype_assets_by_kpids/classic/tiles/checkerboard.png" id="1_0om2w"]
 [ext_resource type="Script" path="res://actors/homing_enemy.gd" id="1_26ym1"]
 [ext_resource type="Script" path="res://actors/aiming_label.gd" id="3_thff0"]
+[ext_resource type="Script" path="res://actors/health.gd" id="4_1g81y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhnb2"]
 size = Vector2(32, 32)
@@ -32,6 +33,14 @@ offset_top = 19.0
 offset_right = 42.0
 offset_bottom = 56.0
 script = ExtResource("3_thff0")
+
+[node name="Health" type="Label" parent="."]
+offset_left = -16.0
+offset_top = -48.0
+offset_right = 16.0
+offset_bottom = -25.0
+horizontal_alignment = 1
+script = ExtResource("4_1g81y")
 
 [connection signal="body_entered" from="." to="." method="_on_hero_body_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

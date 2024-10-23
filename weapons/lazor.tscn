@@ -12,6 +12,8 @@ visible = false
 script = ExtResource("1_4jmna")
 attack_radius = 400.0
 aiming_radius = 600.0
+damage = 0.2
+energy_rate = 0.1
 
 [node name="AttackArea" type="Area2D" parent="."]
 

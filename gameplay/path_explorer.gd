@@ -59,7 +59,8 @@ func _process(_delta: float) -> void:
 		$CanvasLayer/Cross.visible = false
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		Input.set_custom_mouse_cursor(null)
-		
+	
+	clean_death()
 	display_aiming()
 
 
@@ -123,12 +124,13 @@ func display_aiming() -> void:
 	# for each enemy display aiming
 	var all_enemies = lvl.find_children("*Enemy*")
 	for enemy in all_enemies:
-		enemy.get_node("AimingLabel").text = ""
+		if is_instance_valid(enemy):
+			enemy.get_node("AimingLabel").text = ""
 		
 	var keys = Gamevars.aiming_queue.keys()
 	for key in Gamevars.aiming_queue:
 		var node = Gamevars.aiming_queue[key]
-		if weakref(node).get_ref():
+		if is_instance_valid(node):
 			var label = node.get_node("AimingLabel")
 			if label.text == "":
 				label.text = "%s: %s" % [key.split(",")[1], keys.find(key) + 1]
@@ -137,3 +139,11 @@ func display_aiming() -> void:
 				"\n%s: %s" % [key.split(",")[1], keys.find(key) + 1]
 		else:
 			Gamevars.aiming_queue.erase(key)
+
+
+func clean_death() -> void:
+	# remove all death enemy
+	var all_enemies = lvl.find_children("*Enemy*")
+	for enemy in all_enemies:
+		if is_instance_valid(enemy) and enemy.health <= 0:
+			enemy.queue_free()

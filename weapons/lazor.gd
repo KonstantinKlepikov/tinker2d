@@ -18,8 +18,8 @@ func _ready():
 func _draw() -> void:
 	draw_attack_radius()
 	draw_aiming_radius()
-	
-	
+
+
 func draw_aiming_radius() -> void:
 	draw_circle(
 		Vector2(0, 0),
@@ -27,7 +27,8 @@ func draw_aiming_radius() -> void:
 		Gamevars.AIMING_RADIUS_COLOR, 
 		false
 	)
-	
+
+
 func draw_attack_radius() -> void:
 	draw_circle(
 		Vector2(0, 0), 
