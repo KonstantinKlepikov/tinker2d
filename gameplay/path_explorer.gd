@@ -17,12 +17,12 @@ func _ready():
 	hide_strategic()
 	
 	# weapons
-	# TODO: fix - sent in hero_path list of weapons to instantiate
+	# TODO: get names from a weapons dict and add programaticaluy
+	# buttons and signals
 	$CanvasLayer/Bar/Weapon1.text = 'lazor'
 	$CanvasLayer/Bar/Weapon2.text = 'rocket'
 	hero_and_path.main_weapon = hero_and_path.weapons['lazor']
 	hero_and_path.main_weapon.visible = true
-	hero_and_path.weapons['lazor'].fire()
 	
 	# enemies
 	for enemy in lvl.find_children("*Enemy*"):
@@ -107,8 +107,8 @@ func _on_weapon_2_toggled(toggled_on: bool) -> void:
 	else:
 		_on_weapon_1_toggled(true)
 		$CanvasLayer/Bar/Weapon1.set_pressed_no_signal(true)
-		
-		
+
+
 func hide_strategic() -> void:
 	for n in lvl.get_children():
 		if (
@@ -117,7 +117,8 @@ func hide_strategic() -> void:
 			and n.name != "EndNode"
 			) or "spawn_zone" in n.get_groups():
 			n.visible = false
-			
+
+
 func display_aiming() -> void:
 	# for each enemy display aiming
 	var all_enemies = lvl.find_children("*Enemy*")

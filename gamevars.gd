@@ -10,7 +10,8 @@ var hero_pos: Vector2 # global position of hero
 var is_hero_on_start_or_end: bool # check can be act something with hero
 var is_hero_empty: bool = false # check is not hero energy empty
 var current_mouse_in_enemy: Area2D = null # current enemy where mouse in
-var aiming_queue: Dictionary = {} # current aiming queue
+var aiming_queue: Dictionary = {} # current aiming queue, 
+# where key is a names of enemy and weapon, value is a enemy node
 
 
 # game constants

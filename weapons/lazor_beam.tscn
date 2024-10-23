@@ -8,8 +8,7 @@ glow_enabled = true
 glow_strength = 0.64
 glow_blend_mode = 0
 
-[node name="LazorBeam" type="RayCast2D"]
-target_position = Vector2(0, 0)
+[node name="LazorBeam" type="Node2D"]
 script = ExtResource("1_cs1tn")
 
 [node name="Line2D" type="Line2D" parent="."]

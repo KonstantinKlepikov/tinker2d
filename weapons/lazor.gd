@@ -3,16 +3,14 @@ extends Node2D
 @export var attack_radius: float
 @export var aiming_radius: float
 @export var damage: float
-@export var ammo: float
-@export var rate: float # shot per second
-@export var jamming_probability: float
-@export var jamming_time: float
+@export var energy_rate: float # energy consuming rate of lazor
+@export var charge_rate: float # recharge rate
 
 var in_aiming_range: Array[Area2D] = []
 var in_attack_range: Array[Area2D] = []
 
 
-func _ready():	
+func _ready():
 	$AttackArea/CollisionShape2D.shape.radius = attack_radius
 	$AimingArea/CollisionShape2D.shape.radius = aiming_radius
 
@@ -37,10 +35,11 @@ func draw_attack_radius() -> void:
 		Gamevars.ATTACK_RADIUS_COLOR, 
 		false
 	)
-	
 
-func fire() -> void:
-	$LazorBeam.is_casting = true
+
+func fire(target: Area2D) -> void:
+	if target in in_attack_range:
+		$LazorBeam.appear(target)
 
 
 func _on_attack_area_area_entered(area: Area2D) -> void:

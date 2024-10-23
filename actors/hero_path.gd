@@ -14,6 +14,7 @@ var weapons: Dictionary
 
 func _ready():	
 	build_hero_path()
+	# TODO: make a more flexible way to add weapons
 	weapons['lazor'] = preload("res://weapons/lazor.tscn").instantiate()
 	weapons['rocket'] = preload("res://weapons/rocket.tscn").instantiate()
 	$PathFollow2D/Hero.add_child(weapons['lazor'])
@@ -49,12 +50,15 @@ func _process(delta: float) -> void:
 	# aiming of enemy
 	if Input.is_action_just_pressed("left") and Gamevars.current_mouse_in_enemy:
 		aim_enemy(Gamevars.current_mouse_in_enemy)
+	
+	fire_with_each_weapon()
 
 
 func build_hero_path():
 	# build path from line vector
 	for i in Gamevars.line.points:
 		curve.add_point(i)
+
 
 func reduce_speed():
 	energy_consume = Gamevars.HERO_SPEED_REDUCER - current_speed_coef
@@ -73,3 +77,11 @@ func aim_enemy(enemy: Area2D) -> void:
 	else:
 		if enemy in main_weapon.in_aiming_range:
 			Gamevars.aiming_queue[key] = enemy
+
+
+func fire_with_each_weapon() -> void:
+	if is_run and hero_energy > 0:
+		for weapon in weapons.values():
+			for key in Gamevars.aiming_queue.keys():
+				if weapon.name in key:
+					weapon.fire(Gamevars.aiming_queue[key])
