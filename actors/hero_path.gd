@@ -81,7 +81,10 @@ func aim_enemy(enemy: Area2D) -> void:
 
 func fire_with_each_weapon() -> void:
 	if is_run and hero_energy > 0:
+		# fire with each weapon
 		for weapon in weapons.values():
+			# fire only to first enemy in queue
 			for key in Gamevars.aiming_queue.keys():
 				if weapon.name in key:
 					weapon.fire(Gamevars.aiming_queue[key])
+					break

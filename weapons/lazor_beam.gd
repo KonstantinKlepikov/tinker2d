@@ -17,7 +17,10 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if is_casting and is_instance_valid(enemy):
 		$Line2D.points[1] = to_local(enemy.position)
+		# consume enemy health
 		enemy.health -= get_parent().damage
+		# consume energy
+		#get_parent().get_parent().hero_energy -= get_parent().energy_rate
 		
 	if is_casting and not is_instance_valid(enemy):
 		disappear()
@@ -26,6 +29,10 @@ func _process(_delta: float) -> void:
 func appear(target: Area2D) -> void:
 	enemy = target
 	is_casting = true
+	# consume energy
+	get_parent().get_parent().get_parent().get_parent().energy_consume += \
+	get_parent().energy_consume
+	# cast beam
 	if tween and tween.is_running():
 		tween.kill()
 	tween = create_tween()
@@ -35,6 +42,10 @@ func appear(target: Area2D) -> void:
 
 func disappear() -> void:
 	is_casting = false
+	# stop consume energy
+	get_parent().get_parent().get_parent().get_parent().energy_consume -= \
+	get_parent().energy_consume
+	# stop cast beam
 	if tween and tween.is_running():
 		tween.kill()
 	tween = create_tween()

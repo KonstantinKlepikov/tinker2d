@@ -29,16 +29,16 @@ shape = SubResource("RectangleShape2D_bhnb2")
 shape = SubResource("CircleShape2D_s0151")
 
 [node name="AimingLabel" type="Label" parent="."]
-offset_top = 19.0
-offset_right = 42.0
-offset_bottom = 56.0
+offset_left = 24.0
+offset_top = -8.0
+offset_right = 66.0
+offset_bottom = 29.0
 script = ExtResource("3_thff0")
 
-[node name="Health" type="Label" parent="."]
-offset_left = -16.0
-offset_top = -48.0
-offset_right = 16.0
-offset_bottom = -25.0
+[node name="Health" type="Label" parent="AimingLabel"]
+offset_top = -24.0
+offset_right = 32.0
+offset_bottom = -1.0
 horizontal_alignment = 1
 script = ExtResource("4_1g81y")
 

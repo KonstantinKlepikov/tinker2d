@@ -3,7 +3,7 @@ extends Node2D
 @export var attack_radius: float
 @export var aiming_radius: float
 @export var damage: float
-@export var energy_rate: float # energy consuming rate of lazor
+@export var energy_consume: float # energy consuming rate of lazor
 @export var charge_rate: float # recharge rate
 
 var in_aiming_range: Array[Area2D] = []
