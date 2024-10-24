@@ -15,13 +15,16 @@ var end: StaticBody2D # end node
 
 func _ready():
 
+	# add level	
 	lvl = start_map.instantiate()
 	add_child(lvl)
 	
+	# add path line
 	line = preload("res://levels/line/path_line.tscn").instantiate()
 	line.default_color = Color(1, 1, 1, 0)
 	lvl.add_child(line)
 	
+	# start and end nodes
 	start = path_node.instantiate()
 	start.set_name("StartNode")
 	start.position = Vector2(lvl.start_x, lvl.start_y)
@@ -31,6 +34,11 @@ func _ready():
 	end.set_name("EndNode")
 	end.position = Vector2(lvl.end_x, lvl.end_y)
 	lvl.add_child(end)
+	
+	# enemy
+	for enemy in lvl.find_children("*Enemy*"):
+		enemy.visible = false
+		enemy.set_process(false)
 
 
 func _process(_delta: float) -> void:

@@ -9,8 +9,8 @@
 [node name="Rocket" type="Node2D"]
 visible = false
 script = ExtResource("1_3hthx")
-attack_radius = 1200.0
-aiming_radius = 800.0
+attack_radius = 800.0
+aiming_radius = 1200.0
 
 [node name="AttackArea" type="Area2D" parent="."]
 
@@ -21,3 +21,8 @@ shape = SubResource("CircleShape2D_kqlbk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AimingArea"]
 shape = SubResource("CircleShape2D_t51as")
+
+[connection signal="area_entered" from="AttackArea" to="." method="_on_attack_area_area_entered"]
+[connection signal="area_exited" from="AttackArea" to="." method="_on_attack_area_area_exited"]
+[connection signal="area_entered" from="AimingArea" to="." method="_on_aiming_area_area_entered"]
+[connection signal="area_exited" from="AimingArea" to="." method="_on_aiming_area_area_exited"]

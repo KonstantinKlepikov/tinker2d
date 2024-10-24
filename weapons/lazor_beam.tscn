@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://uxvj55ixgl54"]
+
+[ext_resource type="Script" path="res://weapons/lazor_beam.gd" id="1_cs1tn"]
+
+[sub_resource type="Environment" id="Environment_mc05e"]
+background_mode = 3
+glow_enabled = true
+glow_strength = 0.64
+glow_blend_mode = 0
+
+[node name="LazorBeam" type="Node2D"]
+script = ExtResource("1_cs1tn")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(40, 0, 100, 0)
+width = 8.0
+default_color = Color(18.378, 72.973, 0, 1)
+texture_mode = 2
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+sharp_limit = 8.0
+antialiased = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_mc05e")

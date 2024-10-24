@@ -46,5 +46,4 @@ func _on_terrain_slow_body_entered(body: Node2D) -> void:
 
 func _on_terrain_slow_body_exited(body: Node2D) -> void:
 	if body.name == "Hero":
-		#current_speed_coef += Gamevars.TERRAIN_SPEED_COEF_05
 		body.get_parent().get_parent().current_speed_coef += Gamevars.TERRAIN_SPEED_COEF_05
