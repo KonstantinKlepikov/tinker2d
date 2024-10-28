@@ -34,21 +34,20 @@ func _process(_delta: float) -> void:
 	# global hero position for enemy targets
 	Gamevars.hero_pos = hero_and_path.get_node("PathFollow2D/Hero").global_position
 	
+	# display speed multiplication coef
 	$CanvasLayer/GameInfo/SpeedCoef.text = (
 		"Speed coef: " + \
 		str(hero_and_path.current_speed_coef  * \
 		hero_and_path.current_bust_coef)
 	)
+	# display energy consume rate
 	$CanvasLayer/GameInfo/EnergyConsume.text = (
 		"Consume: " + str(snappedf(hero_and_path.energy_consume, 0.01))
 	)
+	# display current energy
 	$CanvasLayer/GameInfo/HeroEnergy.text = (
 		"Energy: " + str(int(hero_and_path.hero_energy))
 	)
-	if hero_and_path.is_busted:
-		$CanvasLayer/GameInfo/CanBust.text = "Cant bust"
-	else:
-		$CanvasLayer/GameInfo/CanBust.text = "Bust available"
 		
 	# change aiming cross
 	if Gamevars.current_mouse_in_enemy:
@@ -86,13 +85,23 @@ func _on_bust_pressed():
 			and not hero_and_path.is_busted:
 		hero_and_path.is_busted = true
 		$CanvasLayer/Bar/Bust.disabled = true
+		$CanvasLayer/GameInfo/CanBust.text = "Boosted"
+		
+		# set bust energy consume and speed coef
 		hero_and_path.current_bust_coef = Gamevars.BUST_COEF
-		hero_and_path.hero_energy -= Gamevars.BUST_ENERGY_REDUCE
+		hero_and_path.current_hero_bust_energy_consume = Gamevars.BUST_ENERGY_CONSUME
 		await get_tree().create_timer(Gamevars.BUST_DURATION).timeout
+		
+		# unset bust energy consume and speed coef
 		hero_and_path.current_bust_coef = 1.0
+		hero_and_path.current_hero_bust_energy_consume = 0.0
+		$CanvasLayer/GameInfo/CanBust.text = "Boost coldown"
+		
+		# unset bust coldown
 		await get_tree().create_timer(Gamevars.BUST_TIMEOUT).timeout
 		hero_and_path.is_busted = false
 		$CanvasLayer/Bar/Bust.disabled = false
+		$CanvasLayer/GameInfo/CanBust.text = "Boost available"
 
 
 func _on_weapon_1_toggled(toggled_on: bool) -> void:

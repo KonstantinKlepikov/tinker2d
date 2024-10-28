@@ -6,15 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://cko02oljhiby" path="res://paused/paused.tscn" id="3_yooxm"]
 [ext_resource type="PackedScene" uid="uid://cee5dna3u27jf" path="res://assets/select_sfx.tscn" id="4_3p0am"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hc8ot"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l7rt3"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1ussk"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lbpei"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3esiv"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_07ote"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k0nyq"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nmyu5"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w3uop"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v1fvr"]
 
 [node name="Tactic" type="Node2D"]
 script = ExtResource("1_472xi")
@@ -33,31 +33,31 @@ vertical = true
 [node name="Run" type="Button" parent="CanvasLayer/Bar"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_hc8ot")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_l7rt3")
 text = "run"
 
 [node name="Bust" type="Button" parent="CanvasLayer/Bar"]
 layout_mode = 2
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_1ussk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lbpei")
 disabled = true
-text = "bust"
+text = "boost"
 
 [node name="Stop" type="Button" parent="CanvasLayer/Bar"]
 layout_mode = 2
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_3esiv")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_07ote")
 disabled = true
 text = "wait"
 
 [node name="Weapon1" type="CheckButton" parent="CanvasLayer/Bar"]
 layout_mode = 2
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_k0nyq")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nmyu5")
 button_pressed = true
 text = "Weapon1"
 alignment = 1
 
 [node name="Weapon2" type="CheckButton" parent="CanvasLayer/Bar"]
 layout_mode = 2
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_w3uop")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_v1fvr")
 text = "Weapon1"
 alignment = 1
 
@@ -81,6 +81,7 @@ layout_mode = 2
 
 [node name="CanBust" type="Label" parent="CanvasLayer/GameInfo"]
 layout_mode = 2
+text = "Boost available"
 
 [node name="Cross" type="Sprite2D" parent="CanvasLayer"]
 z_index = 10

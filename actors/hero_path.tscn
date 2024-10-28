@@ -8,7 +8,6 @@
 [node name="HeroPath" type="Path2D"]
 curve = SubResource("Curve2D_rskab")
 script = ExtResource("1_7goue")
-hero_energy = 6000
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
 rotates = false

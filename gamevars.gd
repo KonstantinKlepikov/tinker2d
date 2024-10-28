@@ -10,12 +10,12 @@ var hero_pos: Vector2 # global position of hero
 var is_hero_on_start_or_end: bool # check can be act something with hero
 var is_hero_empty: bool = false # check is not hero energy empty
 var current_mouse_in_enemy: Area2D = null # current enemy where mouse in
-var aiming_queue: Dictionary = {} # current aiming queue, 
+var aiming_queue: Dictionary = {} # current aiming queue,
 # where key is a names of enemy and weapon, value is a enemy node
 
 
 # game constants
-const HERO_START_ENERGY: int = 4000
+const HERO_START_ENERGY: float = 6000.0
 const HERO_SPEED: float = 0.015
 
 const TERRAIN_BASE_COEF: float = 1.0
@@ -25,7 +25,7 @@ const HERO_SPEED_REDUCER: float = 2.0 # energy consume = reducer - speed coef
 const MIN_HERO_SPEED: float = 0.01
 
 const BUST_COEF: float = 2.0
-const BUST_ENERGY_REDUCE: float = 10.0
+const BUST_ENERGY_CONSUME: float = 3.0
 const BUST_DURATION: float = 2.0
 const BUST_TIMEOUT: float = 5.0
 
