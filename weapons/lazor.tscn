@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://4plscns7bhvn"]
 
 [ext_resource type="Script" path="res://weapons/lazor.gd" id="1_4jmna"]
-[ext_resource type="PackedScene" uid="uid://uxvj55ixgl54" path="res://weapons/lazor_beam.tscn" id="2_qa5ja"]
+[ext_resource type="PackedScene" path="res://weapons/lazor_beam.tscn" id="2_qa5ja"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kqlbk"]
 

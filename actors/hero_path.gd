@@ -1,9 +1,10 @@
 extends Path2D
 
 @export var current_speed_coef: float = Gamevars.TERRAIN_BASE_COEF
-@export var hero_energy: int = Gamevars.HERO_START_ENERGY
+@export var hero_energy: float = Gamevars.HERO_START_ENERGY
 
 var current_bust_coef: float = 1.0
+var current_hero_bust_energy_consume: float = 0.0
 var energy_consume: float = 0.0
 var is_run := false # run or wait
 var is_at_end := false
@@ -61,8 +62,9 @@ func build_hero_path():
 
 
 func reduce_speed():
-	energy_consume = Gamevars.HERO_SPEED_REDUCER - current_speed_coef
-	if energy_consume > Gamevars.MIN_HERO_SPEED:
+	energy_consume = Gamevars.HERO_SPEED_REDUCER - current_speed_coef \
+	+ current_hero_bust_energy_consume
+	if energy_consume > 0:
 		hero_energy -= energy_consume
 	else:
 		hero_energy -= Gamevars.MIN_HERO_SPEED

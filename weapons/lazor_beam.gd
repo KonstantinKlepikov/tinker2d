@@ -29,7 +29,7 @@ func _process(_delta: float) -> void:
 func appear(target: Area2D) -> void:
 	enemy = target
 	is_casting = true
-	# consume energy
+	# start consume hero energy
 	get_parent().get_parent().get_parent().get_parent().energy_consume += \
 	get_parent().energy_consume
 	# cast beam
@@ -42,7 +42,7 @@ func appear(target: Area2D) -> void:
 
 func disappear() -> void:
 	is_casting = false
-	# stop consume energy
+	# stop consume hero energy
 	get_parent().get_parent().get_parent().get_parent().energy_consume -= \
 	get_parent().energy_consume
 	# stop cast beam
