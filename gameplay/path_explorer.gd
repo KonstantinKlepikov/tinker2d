@@ -67,10 +67,17 @@ func _process(_delta: float) -> void:
 func _on_run_pressed():
 	if hero_and_path.hero_energy > 0 and not hero_and_path.is_at_end:
 		hero_and_path.is_run = true
+		$CanvasLayer/Bar/Run.disabled = true
+		if not hero_and_path.is_busted:
+			$CanvasLayer/Bar/Bust.disabled = false
+		$CanvasLayer/Bar/Stop.disabled = false
 
 
 func _on_stop_pressed():
 	hero_and_path.is_run = false
+	$CanvasLayer/Bar/Run.disabled = false
+	$CanvasLayer/Bar/Stop.disabled = true
+	$CanvasLayer/Bar/Bust.disabled = true
 
 
 func _on_bust_pressed():
@@ -78,12 +85,14 @@ func _on_bust_pressed():
 			and not hero_and_path.is_at_end \
 			and not hero_and_path.is_busted:
 		hero_and_path.is_busted = true
+		$CanvasLayer/Bar/Bust.disabled = true
 		hero_and_path.current_bust_coef = Gamevars.BUST_COEF
 		hero_and_path.hero_energy -= Gamevars.BUST_ENERGY_REDUCE
 		await get_tree().create_timer(Gamevars.BUST_DURATION).timeout
 		hero_and_path.current_bust_coef = 1.0
 		await get_tree().create_timer(Gamevars.BUST_TIMEOUT).timeout
 		hero_and_path.is_busted = false
+		$CanvasLayer/Bar/Bust.disabled = false
 
 
 func _on_weapon_1_toggled(toggled_on: bool) -> void:

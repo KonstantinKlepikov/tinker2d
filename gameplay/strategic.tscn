@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://dglq6vxfx5q2l"]
+[gd_scene load_steps=8 format=3 uid="uid://dglq6vxfx5q2l"]
 
 [ext_resource type="Script" path="res://gameplay/path_builder.gd" id="1_vhdup"]
 [ext_resource type="Script" path="res://gameplay/canvas_hud.gd" id="3_f8mog"]
 [ext_resource type="PackedScene" uid="uid://cko02oljhiby" path="res://paused/paused.tscn" id="5_fgcoq"]
 [ext_resource type="PackedScene" uid="uid://dldqutfbgc2bc" path="res://gameplay/tactic.tscn" id="5_rn88x"]
 [ext_resource type="PackedScene" uid="uid://cee5dna3u27jf" path="res://assets/select_sfx.tscn" id="6_1wlmj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oictc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ksok7"]
 
 [node name="Strategic" type="Node2D"]
 script = ExtResource("1_vhdup")
@@ -24,10 +28,12 @@ vertical = true
 [node name="Clear" type="Button" parent="CanvasLayer/Bar"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_oictc")
 text = "clear"
 
 [node name="ToTactic" type="Button" parent="CanvasLayer/Bar"]
 layout_mode = 2
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ksok7")
 text = "to tactic"
 
 [node name="Mode" type="Label" parent="CanvasLayer"]

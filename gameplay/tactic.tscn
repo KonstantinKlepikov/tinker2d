@@ -1,10 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://dldqutfbgc2bc"]
+[gd_scene load_steps=11 format=3 uid="uid://dldqutfbgc2bc"]
 
 [ext_resource type="Script" path="res://gameplay/path_explorer.gd" id="1_472xi"]
 [ext_resource type="Texture2D" uid="uid://b2u6pcveq4glk" path="res://assets/lazor_cross.png" id="3_bx4if"]
 [ext_resource type="Script" path="res://gameplay/canvas_hud.gd" id="3_cbwfw"]
 [ext_resource type="PackedScene" uid="uid://cko02oljhiby" path="res://paused/paused.tscn" id="3_yooxm"]
 [ext_resource type="PackedScene" uid="uid://cee5dna3u27jf" path="res://assets/select_sfx.tscn" id="4_3p0am"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hc8ot"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1ussk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3esiv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k0nyq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w3uop"]
 
 [node name="Tactic" type="Node2D"]
 script = ExtResource("1_472xi")
@@ -23,24 +33,33 @@ vertical = true
 [node name="Run" type="Button" parent="CanvasLayer/Bar"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_hc8ot")
 text = "run"
 
 [node name="Bust" type="Button" parent="CanvasLayer/Bar"]
 layout_mode = 2
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1ussk")
+disabled = true
 text = "bust"
 
 [node name="Stop" type="Button" parent="CanvasLayer/Bar"]
 layout_mode = 2
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3esiv")
+disabled = true
 text = "wait"
 
 [node name="Weapon1" type="CheckButton" parent="CanvasLayer/Bar"]
 layout_mode = 2
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_k0nyq")
 button_pressed = true
 text = "Weapon1"
+alignment = 1
 
 [node name="Weapon2" type="CheckButton" parent="CanvasLayer/Bar"]
 layout_mode = 2
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_w3uop")
 text = "Weapon1"
+alignment = 1
 
 [node name="GameInfo" type="FlowContainer" parent="CanvasLayer"]
 offset_right = 128.0
