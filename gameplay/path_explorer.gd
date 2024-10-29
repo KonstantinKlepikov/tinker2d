@@ -5,13 +5,12 @@ var lvl: Node2D # map
 
 
 func _ready():
-	
 	# level
 	lvl = Gamevars.current_map
 	add_child(lvl)
 
 	# hero
-	hero_and_path = preload("res://actors/hero_path.tscn").instantiate()
+	hero_and_path = load("res://actors/hero_path.tscn").instantiate()
 	lvl.add_child(hero_and_path)
 	
 	hide_strategic()

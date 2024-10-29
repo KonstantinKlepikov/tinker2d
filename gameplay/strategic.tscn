@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dglq6vxfx5q2l"]
+[gd_scene load_steps=7 format=3 uid="uid://dglq6vxfx5q2l"]
 
 [ext_resource type="Script" path="res://gameplay/path_builder.gd" id="1_vhdup"]
 [ext_resource type="Script" path="res://gameplay/canvas_hud.gd" id="3_f8mog"]
 [ext_resource type="PackedScene" uid="uid://cko02oljhiby" path="res://paused/paused.tscn" id="5_fgcoq"]
-[ext_resource type="PackedScene" uid="uid://dldqutfbgc2bc" path="res://gameplay/tactic.tscn" id="5_rn88x"]
 [ext_resource type="PackedScene" uid="uid://cee5dna3u27jf" path="res://assets/select_sfx.tscn" id="6_1wlmj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oictc"]
@@ -12,7 +11,7 @@
 
 [node name="Strategic" type="Node2D"]
 script = ExtResource("1_vhdup")
-tactic_scene = ExtResource("5_rn88x")
+start_map = "level_1"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("3_f8mog")
