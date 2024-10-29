@@ -14,24 +14,21 @@ var weapons: Dictionary
 
 
 func _ready():	
-	build_hero_path()
 	# TODO: make a more flexible way to add weapons
 	weapons['lazor'] = preload("res://weapons/lazor.tscn").instantiate()
 	weapons['rocket'] = preload("res://weapons/rocket.tscn").instantiate()
 	$PathFollow2D/Hero.add_child(weapons['lazor'])
 	$PathFollow2D/Hero.add_child(weapons['rocket'])
-	
-	$PathFollow2D.progress_ratio += 0.0
-	Gamevars.is_hero_on_start_or_end = true
+	build_hero_path()
 
 
 func _process(delta: float) -> void:
-
 	if is_run:
 		Gamevars.is_hero_on_start_or_end = false
 		$PathFollow2D.progress_ratio += (
 			delta * Gamevars.HERO_SPEED * current_speed_coef * current_bust_coef
 		)
+		# stop at end node
 		if $PathFollow2D.progress_ratio == 1.0:
 			Gamevars.is_hero_on_start_or_end = true
 			is_run = false
@@ -56,9 +53,13 @@ func _process(delta: float) -> void:
 
 
 func build_hero_path():
-	# build path from line vector
-	for i in Gamevars.line.points:
+	curve.clear_points()
+	for i in Gamevars.line_points:
 		curve.add_point(i)
+	$PathFollow2D.progress_ratio += 0.0
+	Gamevars.is_hero_on_start_or_end = true
+	Gamevars.is_hero_empty = false
+	Gamevars.aiming_queue.clear()
 
 
 func reduce_speed():

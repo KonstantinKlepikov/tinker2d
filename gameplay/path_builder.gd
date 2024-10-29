@@ -1,8 +1,7 @@
 extends Node2D
 
-@export var tactic_scene: PackedScene
+@export var start_map: String
 
-var start_map = preload("res://levels/level_1.tscn")
 var path_node = preload("res://levels/path_nodes/path_node.tscn")
 var line: Line2D # current line path
 var lvl: Node2D # current map
@@ -13,10 +12,9 @@ var start: StaticBody2D # start node
 var end: StaticBody2D # end node
 
 
-func _ready():
-
+func _ready():	
 	# add level	
-	lvl = start_map.instantiate()
+	lvl = load("res://levels/%s.tscn" % start_map).instantiate()
 	add_child(lvl)
 	
 	# add path line
@@ -148,10 +146,11 @@ func _on_to_tactic_pressed():
 	else:
 		remove_child(lvl)
 		Gamevars.current_map = lvl
-		Gamevars.line = line
+		Gamevars.line_points = line.points.duplicate()
 		Gamevars.in_node = false
 		Gamevars.is_draging = false
-		get_tree().change_scene_to_packed(tactic_scene)
+		
+		get_tree().change_scene_to_packed(preload("res://gameplay/tactic.tscn"))
 
 
 func reshape_path() -> void:

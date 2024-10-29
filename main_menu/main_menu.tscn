@@ -1,9 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://j87n4lychbt5"]
+[gd_scene load_steps=6 format=3 uid="uid://j87n4lychbt5"]
 
 [ext_resource type="Script" path="res://main_menu/version_label.gd" id="1_5huni"]
 [ext_resource type="Script" path="res://main_menu/menu_options.gd" id="2_gpv3d"]
-[ext_resource type="PackedScene" uid="uid://dpicmplffpula" path="res://settings/settings.tscn" id="3_2osu0"]
-[ext_resource type="PackedScene" uid="uid://dglq6vxfx5q2l" path="res://gameplay/strategic.tscn" id="3_fbesa"]
 [ext_resource type="PackedScene" uid="uid://cee5dna3u27jf" path="res://assets/select_sfx.tscn" id="4_82nwe"]
 
 [sub_resource type="Gradient" id="Gradient_va138"]
@@ -113,8 +111,6 @@ grow_vertical = 2
 shortcut_context = NodePath("Start")
 alignment = 1
 script = ExtResource("2_gpv3d")
-strategic_scene = ExtResource("3_fbesa")
-settings_scene = ExtResource("3_2osu0")
 
 [node name="Start" type="Button" parent="MenuOptions"]
 layout_mode = 2

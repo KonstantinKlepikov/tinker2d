@@ -2,6 +2,7 @@ extends Node
 
 
 var current_map: Node2D # current map instance
+var line_points: PackedVector2Array # hero line points
 var line: Line2D # current path line
 var in_node := false # is mouse inside node
 var is_draging: bool = false # is dragging vieport

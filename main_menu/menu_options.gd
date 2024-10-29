@@ -1,8 +1,5 @@
 extends VFlowContainer
 
-@export var strategic_scene: PackedScene
-@export var settings_scene: PackedScene
-
 func _ready() -> void:
 	get_children()[0].grab_focus()
 	
@@ -13,7 +10,7 @@ func _on_quit_pressed() -> void:
 	get_tree().quit()
 
 func _on_settings_pressed() -> void:
-	get_tree().change_scene_to_packed(settings_scene)
+	get_tree().change_scene_to_packed(preload("res://settings/settings.tscn"))
 
 func _on_start_pressed() -> void:
-	get_tree().change_scene_to_packed(strategic_scene)
+	get_tree().change_scene_to_packed(preload("res://gameplay/strategic.tscn"))
