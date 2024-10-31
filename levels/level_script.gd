@@ -27,22 +27,22 @@ func _on_terrain_impass_area_exited(area: Area2D) -> void:
 	# mark impossible line exit
 	if area.name == "LinePathArea2D":
 		line_inside_impass -= 1
-		
-		
+
+
 func _on_terrain_fast_body_entered(body: Node2D) -> void:
 	if body.name == "Hero":
 		body.get_parent().get_parent().current_speed_coef += Gamevars.TERRAIN_SPEED_COEF_05
-		
+
 
 func _on_terrain_fast_body_exited(body: Node2D) -> void:
 	if body.name == "Hero":
 		body.get_parent().get_parent().current_speed_coef -= Gamevars.TERRAIN_SPEED_COEF_05
-		
+
 
 func _on_terrain_slow_body_entered(body: Node2D) -> void:
 	if body.name == "Hero":
 		body.get_parent().get_parent().current_speed_coef -= Gamevars.TERRAIN_SPEED_COEF_05
-		
+
 
 func _on_terrain_slow_body_exited(body: Node2D) -> void:
 	if body.name == "Hero":

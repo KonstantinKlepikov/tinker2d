@@ -1,14 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://j87n4lychbt5"]
+[gd_scene load_steps=5 format=3 uid="uid://j87n4lychbt5"]
 
 [ext_resource type="Script" path="res://main_menu/version_label.gd" id="1_5huni"]
+[ext_resource type="Texture2D" uid="uid://bjku3s6ehtytb" path="res://assets/title.png" id="1_6libs"]
 [ext_resource type="Script" path="res://main_menu/menu_options.gd" id="2_gpv3d"]
 [ext_resource type="PackedScene" uid="uid://cee5dna3u27jf" path="res://assets/select_sfx.tscn" id="4_82nwe"]
-
-[sub_resource type="Gradient" id="Gradient_va138"]
-colors = PackedColorArray(1, 0.105882, 0.419608, 1, 0.270588, 0.792157, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_eh6qc"]
-gradient = SubResource("Gradient_va138")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -18,25 +13,31 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GradBG" type="Node2D" parent="."]
-rotation = -1.5708
-
-[node name="TextureBG" type="TextureRect" parent="GradBG"]
-offset_left = -744.0
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -32.0
 offset_top = -32.0
-offset_right = 32.0
-offset_bottom = 1312.0
-texture = SubResource("GradientTexture2D_eh6qc")
+offset_right = 1312.0
+offset_bottom = 760.0
+color = Color(0, 0, 0, 1)
+
+[node name="MainBackground" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 1029.0
+offset_bottom = 728.0
+texture = ExtResource("1_6libs")
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -65.5
-offset_top = 93.0
-offset_right = 65.5
-offset_bottom = 135.0
+offset_left = 440.0
+offset_top = 104.0
+offset_right = 571.0
+offset_bottom = 146.0
 grow_horizontal = 2
 theme_type_variation = &"HeaderLarge"
 text = "Tinker2d"
@@ -47,10 +48,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -59.5
-offset_top = 156.0
-offset_right = 59.5
-offset_bottom = 182.0
+offset_left = 440.0
+offset_top = 152.0
+offset_right = 567.0
+offset_bottom = 178.0
 grow_horizontal = 2
 text = "Game prototype"
 
@@ -79,10 +80,10 @@ Collect all the things!"
 
 [node name="Version" type="Label" parent="."]
 layout_mode = 0
-offset_left = 1060.0
-offset_top = 20.0
-offset_right = 1258.0
-offset_bottom = 46.0
+offset_left = 1048.0
+offset_top = 24.0
+offset_right = 1246.0
+offset_bottom = 50.0
 text = "Version: [set dynamically]"
 horizontal_alignment = 2
 script = ExtResource("1_5huni")
@@ -102,10 +103,10 @@ anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -35.0
-offset_top = 192.0
-offset_right = 36.0
-offset_bottom = -9.0
+offset_left = 464.0
+offset_top = 184.0
+offset_right = 535.0
+offset_bottom = -17.0
 grow_horizontal = 2
 grow_vertical = 2
 shortcut_context = NodePath("Start")

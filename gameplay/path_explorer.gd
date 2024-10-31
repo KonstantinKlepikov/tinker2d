@@ -127,6 +127,10 @@ func _on_weapon_2_toggled(toggled_on: bool) -> void:
 		$CanvasLayer/Bar/Weapon1.set_pressed_no_signal(true)
 
 
+func _on_game_pause_pressed():
+	$CanvasLayer._pause()
+
+
 func hide_strategic() -> void:
 	for n in lvl.get_children():
 		if (
