@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://j87n4lychbt5"]
 
 [ext_resource type="Script" path="res://main_menu/version_label.gd" id="1_5huni"]
-[ext_resource type="Texture2D" uid="uid://bjku3s6ehtytb" path="res://assets/title.png" id="1_6libs"]
+[ext_resource type="Texture2D" uid="uid://b3hwq7rhf371v" path="res://assets/title_enchanced.png" id="1_mqke3"]
 [ext_resource type="Script" path="res://main_menu/menu_options.gd" id="2_gpv3d"]
 [ext_resource type="PackedScene" uid="uid://cee5dna3u27jf" path="res://assets/select_sfx.tscn" id="4_82nwe"]
 
@@ -25,9 +25,10 @@ color = Color(0, 0, 0, 1)
 layout_mode = 0
 offset_left = -8.0
 offset_top = -8.0
-offset_right = 1029.0
-offset_bottom = 728.0
-texture = ExtResource("1_6libs")
+offset_right = 1912.0
+offset_bottom = 1528.0
+scale = Vector2(0.478987, 0.478987)
+texture = ExtResource("1_mqke3")
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
